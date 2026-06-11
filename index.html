@@ -4,44 +4,43 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>FRANK Autonomous — The first autonomous site survey on the Moon</title>
-<meta name="description" content="FRANK Autonomous Systems Inc. The first autonomous site survey on the Moon. Targeting CLPS delivery in 2029." />
-<link rel="icon" type="image/png" href="logo.png" />
+<meta name="description" content="The autonomy layer for the planetary economy. The first autonomous site survey on the Moon — targeting CLPS delivery in 2029." />
+<link rel="icon" type="image/png" href="favicon.png" />
 
 <!-- Open Graph / Twitter for link previews -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="FRANK Autonomous — The first autonomous site survey on the Moon" />
-<meta property="og:description" content="FRANK Autonomous Systems Inc. Targeting CLPS delivery in 2029." />
-<meta property="og:image" content="website_pic.jpg" />
+<meta property="og:description" content="The autonomy layer for the planetary economy. Targeting CLPS delivery in 2029." />
+<meta property="og:image" content="https://frankautonomous.com/og-card.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="FRANK Autonomous" />
 <meta name="twitter:description" content="The first autonomous site survey on the Moon. Targeting CLPS delivery in 2029." />
-<meta name="twitter:image" content="website_pic.jpg" />
+<meta name="twitter:image" content="https://frankautonomous.com/og-card.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --navy:        #090041;   /* page background, matches logo */
-    --navy-card:   #15125a;   /* card / box background, lifted from page */
-    --navy-card-2: #1d1a6e;   /* hover state */
-    --navy-deep:   #050025;   /* darkest, used sparingly */
+    /* Brand kit — June 2026 */
+    --deep-space:   #0D1137;   /* Deep Space — backgrounds */
+    --orbit-indigo: #1A2350;   /* Orbit Indigo — cards, panels */
+    --indigo-hover: #232D5F;   /* hover state, derived */
+    --space-deep:   #080B26;   /* darkest, derived */
 
-    --red:         #ED4D4D;
-    --red-deep:    #c93838;
-    --red-tint:    rgba(237,77,77,0.08);
+    --signal-red:   #E63946;   /* Signal Red — Command, default accent */
+    --red-deep:     #C42F3B;
 
-    --white:       #f3f4fa;
-    --gray-1:      #c4c8dc;
-    --gray-2:      #8a90ad;
-    --gray-3:      #565b7a;
+    --lunar-white:  #FFFFFF;   /* Lunar White — titles, FRANK */
+    --starlight:    #C8CBE8;   /* Starlight — body text on dark */
+    --slate:        #B0B8C8;   /* Slate — secondary text */
+    --muted:        #8892A8;   /* Muted — captions */
 
     --line:        rgba(255,255,255,0.07);
     --line-2:      rgba(255,255,255,0.14);
 
     --display: 'Russo One', sans-serif;
-    --body:    'Chakra Petch', sans-serif;
-    --mono:    'JetBrains Mono', monospace;
+    --body:    'Inter', sans-serif;
 
     --max: 1240px;
   }
@@ -49,10 +48,10 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    background: var(--navy);
-    color: var(--white);
+    background: var(--deep-space);
+    color: var(--lunar-white);
     font-family: var(--body);
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.45;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -60,22 +59,13 @@
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; display: block; }
 
-  /* Faint, sparse star field */
+  /* Deep Space starfield (fixed pseudo-element — mobile-safe) */
   body::before {
     content: '';
     position: fixed; inset: 0;
-    background-image:
-      radial-gradient(1.2px 1.2px at 17% 22%, rgba(255,255,255,0.55), transparent),
-      radial-gradient(1px   1px   at 73% 11%, rgba(255,255,255,0.40), transparent),
-      radial-gradient(1px   1px   at 41% 78%, rgba(237,77,77,0.30), transparent),
-      radial-gradient(1.5px 1.5px at 88% 64%, rgba(255,255,255,0.45), transparent),
-      radial-gradient(1px   1px   at 8%  91%, rgba(255,255,255,0.30), transparent),
-      radial-gradient(1px   1px   at 60% 38%, rgba(255,255,255,0.35), transparent),
-      radial-gradient(1px   1px   at 33% 6%,  rgba(255,255,255,0.25), transparent);
-    background-size: 1100px 1100px;
+    background: url('bg-starfield.png') center / cover no-repeat var(--deep-space);
     pointer-events: none;
     z-index: 0;
-    opacity: 0.55;
   }
 
   .container { max-width: var(--max); margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
@@ -84,13 +74,13 @@
   nav.top {
     position: fixed; top: 0; left: 0; right: 0;
     z-index: 100;
-    background: rgba(9,0,65,0.88);
+    background: rgba(13,17,55,0.88);
     border-bottom: 1px solid var(--line);
   }
   .nav-inner {
     max-width: var(--max);
     margin: 0 auto;
-    padding: 16px 28px;
+    padding: 12px 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -101,8 +91,8 @@
     font-size: 19px;
     letter-spacing: 0.02em;
   }
-  .nav-brand img { width: 30px; height: 30px; border-radius: 50%; }
-  .nav-brand .as { color: var(--red); }
+  .nav-brand img { height: 40px; width: auto; }
+  .nav-brand .as { color: var(--signal-red); }
 
   .nav-links { display: flex; gap: 32px; align-items: center; }
   .nav-links a {
@@ -111,15 +101,15 @@
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--gray-1);
+    color: var(--starlight);
     transition: color 0.15s;
   }
-  .nav-links a:hover { color: var(--red); }
+  .nav-links a:hover { color: var(--signal-red); }
 
   .nav-cta {
     padding: 10px 18px;
-    background: var(--red);
-    color: var(--white);
+    background: var(--signal-red);
+    color: var(--lunar-white);
     font-family: var(--display);
     font-size: 12px;
     letter-spacing: 0.14em;
@@ -130,7 +120,7 @@
   }
   .nav-cta:hover { background: var(--red-deep); }
 
-  .menu-toggle { display: none; background: none; border: none; color: var(--white); cursor: pointer; }
+  .menu-toggle { display: none; background: none; border: none; color: var(--lunar-white); cursor: pointer; }
 
   /* ========== HERO ========== */
   .hero {
@@ -149,24 +139,42 @@
     width: 100%;
   }
 
+  /* Stacked lockup: flight mark left, FRANK / AUTONOMOUS right */
+  .hero-lockup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(26px, 4vw, 48px);
+  }
+  .hero-lockup img {
+    width: clamp(150px, 21vw, 235px);
+    height: auto;
+  }
   h1.hero-title {
     font-family: var(--display);
-    font-size: clamp(64px, 10vw, 132px);
-    line-height: 0.92;
-    letter-spacing: -0.015em;
+    font-size: clamp(56px, 9vw, 118px);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    text-align: left;
     margin-bottom: 0;
   }
-  h1.hero-title .as { color: var(--red); }
+  h1.hero-title .as {
+    display: block;
+    color: var(--signal-red);
+    font-size: 0.475em;
+    letter-spacing: 0.06em;
+    line-height: 1.15;
+  }
 
   .hero-sub {
     font-size: 22px;
     font-weight: 600;
-    color: var(--gray-1);
+    color: var(--starlight);
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.35;
   }
-  .hero-sub strong { color: var(--white); font-weight: 700; }
+  .hero-sub strong { color: var(--lunar-white); font-weight: 700; }
 
   .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 
@@ -180,11 +188,11 @@
     margin: 0 auto;
   }
   .proof-chip {
-    font-family: var(--mono);
+    font-family: var(--body);
     font-size: 11px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--gray-1);
+    color: var(--starlight);
     padding: 7px 12px;
     border: 1px solid var(--line-2);
     background: rgba(255,255,255,0.02);
@@ -192,7 +200,7 @@
   .proof-chip .dot {
     display: inline-block;
     width: 6px; height: 6px;
-    background: var(--red);
+    background: var(--signal-red);
     border-radius: 50%;
     margin-right: 8px;
     vertical-align: middle;
@@ -211,28 +219,16 @@
     align-items: center;
     gap: 10px;
   }
-  .btn-primary { background: var(--red); color: var(--white); }
+  .btn-primary { background: var(--signal-red); color: var(--lunar-white); }
   .btn-primary:hover { background: var(--red-deep); }
   .btn-ghost {
     background: transparent;
-    color: var(--white);
+    color: var(--lunar-white);
     border: 1px solid var(--line-2);
   }
-  .btn-ghost:hover { border-color: var(--red); color: var(--red); }
+  .btn-ghost:hover { border-color: var(--signal-red); color: var(--signal-red); }
   .btn .arr { transition: transform 0.15s; }
   .btn:hover .arr { transform: translateX(4px); }
-
-  .hero-logo {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-  .hero-logo img {
-    width: 100%;
-    max-width: 360px;
-  }
 
   /* ========== SECTIONS ========== */
   section { padding: 110px 0; position: relative; }
@@ -242,20 +238,20 @@
     font-size: clamp(40px, 6vw, 76px);
     line-height: 1.0;
     letter-spacing: -0.005em;
-    color: var(--red);
+    color: var(--signal-red);
     text-transform: uppercase;
     margin-bottom: 14px;
     max-width: 900px;
   }
-  h2.section-title.white { color: var(--white); }
-  h2.section-title.white .accent { color: var(--red); }
-  h2.section-title .accent { color: var(--white); }
+  h2.section-title.white { color: var(--lunar-white); }
+  h2.section-title.white .accent { color: var(--signal-red); }
+  h2.section-title .accent { color: var(--lunar-white); }
 
   .section-subtitle {
     font-family: var(--body);
     font-weight: 600;
     font-size: 17px;
-    color: var(--gray-1);
+    color: var(--starlight);
     margin-bottom: 56px;
     max-width: 720px;
   }
@@ -267,26 +263,34 @@
     gap: 22px;
   }
   .sol-card {
-    background: var(--navy-card);
+    background: var(--orbit-indigo);
     padding: 44px 32px 38px;
     text-align: center;
     transition: background 0.2s;
   }
-  .sol-card:hover { background: var(--navy-card-2); }
+  .sol-card:hover { background: var(--indigo-hover); }
   .sol-card .icon {
     width: 64px; height: 64px;
     margin: 4px auto 24px;
-    color: var(--white);
+    color: var(--lunar-white);
   }
   .sol-card h3 {
     font-family: var(--display);
     font-size: 22px;
-    color: var(--red);
+    color: var(--signal-red);
     letter-spacing: 0.05em;
     margin-bottom: 16px;
   }
+  .sol-card .expand {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: -10px 0 14px;
+  }
   .sol-card p {
-    color: var(--gray-1);
+    color: var(--starlight);
     font-size: 15px;
     font-weight: 600;
     line-height: 1.5;
@@ -301,18 +305,18 @@
   }
   .member-card {
     padding: 32px;
-    background: var(--navy-card);
+    background: var(--orbit-indigo);
     transition: background 0.2s;
   }
-  .member-card:hover { background: var(--navy-card-2); }
+  .member-card:hover { background: var(--indigo-hover); }
   .member-photo {
     width: 100%;
     aspect-ratio: 1;
-    background: var(--navy-deep);
+    background: var(--space-deep);
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 24px;
-    color: var(--gray-3);
-    font-family: var(--mono);
+    color: var(--muted);
+    font-family: var(--body);
     font-size: 12px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -328,13 +332,13 @@
     font-family: var(--body);
     font-weight: 700;
     font-size: 12px;
-    color: var(--red);
+    color: var(--signal-red);
     letter-spacing: 0.14em;
     text-transform: uppercase;
     margin-bottom: 18px;
   }
   .member-bio {
-    color: var(--gray-1);
+    color: var(--starlight);
     font-size: 14px;
     font-weight: 600;
     line-height: 1.55;
@@ -345,11 +349,11 @@
   .team-subhead {
     margin-top: 56px;
     margin-bottom: 22px;
-    font-family: var(--mono);
+    font-family: var(--body);
     font-size: 11px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--gray-2);
+    color: var(--slate);
     padding-bottom: 14px;
     border-bottom: 1px solid var(--line);
     max-width: 920px;
@@ -390,7 +394,6 @@
   .cta-section {
     padding: 130px 0 110px;
     border-top: 1px solid var(--line);
-    background: var(--navy);
   }
   .cta-head { text-align: left; max-width: 920px; }
   .cta-section h2 {
@@ -399,21 +402,21 @@
     line-height: 1.0;
     margin-bottom: 14px;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--signal-red);
   }
-  .cta-section h2 .accent { color: var(--white); }
+  .cta-section h2 .accent { color: var(--lunar-white); }
   .cta-section .cta-sub {
     font-family: var(--display);
     font-size: 22px;
-    color: var(--white);
+    color: var(--lunar-white);
     margin-bottom: 8px;
   }
-  .cta-section .cta-sub .accent { color: var(--red); }
+  .cta-section .cta-sub .accent { color: var(--signal-red); }
   .cta-section .cta-vision {
     font-family: var(--body);
     font-weight: 600;
     font-size: 17px;
-    color: var(--gray-1);
+    color: var(--starlight);
     line-height: 1.5;
     max-width: 720px;
     margin-top: 18px;
@@ -424,7 +427,6 @@
   footer {
     padding: 42px 0 28px;
     border-top: 1px solid var(--line);
-    background: var(--navy);
   }
   .footer-grid {
     display: flex;
@@ -440,12 +442,12 @@
     font-family: var(--display);
     font-size: 15px;
   }
-  .footer-brand img { width: 26px; height: 26px; }
-  .footer-brand .as { color: var(--red); }
+  .footer-brand img { height: 30px; width: auto; }
+  .footer-brand .as { color: var(--signal-red); }
   .footer-meta {
-    font-family: var(--mono);
+    font-family: var(--body);
     font-size: 11px;
-    color: var(--gray-3);
+    color: var(--muted);
     letter-spacing: 0.06em;
   }
   .footer-links { display: flex; gap: 22px; }
@@ -453,12 +455,12 @@
     font-family: var(--body);
     font-weight: 700;
     font-size: 12px;
-    color: var(--gray-2);
+    color: var(--slate);
     transition: color 0.15s;
     text-transform: uppercase;
     letter-spacing: 0.12em;
   }
-  .footer-links a:hover { color: var(--red); }
+  .footer-links a:hover { color: var(--signal-red); }
 
   /* ========== SCROLL REVEAL ========== */
   .reveal {
@@ -477,7 +479,7 @@
     .menu-toggle { display: block; }
     .nav-cta { display: none; }
     .hero { padding-top: 110px; }
-    .hero-logo img { max-width: 280px; }
+    .hero-lockup { flex-direction: column; gap: 30px; }
     .solution-grid { grid-template-columns: 1fr; }
     .team-grid { grid-template-columns: 1fr; }
     .team-secondary { grid-template-columns: 1fr; }
@@ -490,8 +492,8 @@
   /* Mobile menu */
   .mobile-menu {
     display: none;
-    position: fixed; top: 62px; left: 0; right: 0;
-    background: var(--navy);
+    position: fixed; top: 64px; left: 0; right: 0;
+    background: rgba(13,17,55,0.97);
     border-bottom: 1px solid var(--line);
     padding: 22px 28px;
     z-index: 99;
@@ -502,7 +504,7 @@
     font-weight: 700;
     font-size: 14px;
     letter-spacing: 0.12em;
-    color: var(--gray-1);
+    color: var(--starlight);
     text-transform: uppercase;
   }
 </style>
@@ -513,8 +515,8 @@
 <nav class="top">
   <div class="nav-inner">
     <a href="#top" class="nav-brand">
-      <img src="logo.png" alt="FRANK Autonomous logo" />
-      <span>FRANK<span class="as"> Autonomous</span></span>
+      <img src="flight-mark.png" alt="FRANK Autonomous flight mark" />
+      <span>FRANK <span class="as">AUTONOMOUS</span></span>
     </a>
     <div class="nav-links">
       <a href="#what">What we do</a>
@@ -540,10 +542,10 @@
 <section class="hero" id="top">
   <div class="container">
     <div class="hero-grid">
-      <div class="hero-logo">
-        <img src="logo.png" alt="FRANK Autonomous — moon and constellation mark" />
+      <div class="hero-lockup">
+        <img src="flight-mark.png" alt="FRANK Autonomous flight mark" />
+        <h1 class="hero-title">FRANK<span class="as">AUTONOMOUS</span></h1>
       </div>
-      <h1 class="hero-title">FRANK<span class="as"> Autonomous</span></h1>
       <p class="hero-sub">
         The first autonomous site survey on the Moon. Targeting CLPS delivery in 2029.
       </p>
@@ -572,7 +574,7 @@
       <h2 class="section-title">What we do</h2>
       <p class="section-subtitle">
         FRANK Autonomous Systems builds the autonomy layer for planetary rovers.
-        Mission 1 puts the first autonomous swarm on the Moon to collect ground-truth terrain and subsurface mineral data — the foundation layer the lunar economy needs.
+        Mission 1 puts the first autonomous swarm on the Moon: hazard mapping and site-characterisation surveys first, subsurface mineral prospecting second. Ground-truth data the lunar economy needs.
       </p>
     </div>
 
@@ -584,7 +586,8 @@
           <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 1.97-3.44A3 3 0 0 0 21 13a3 3 0 0 0-.5-1.65A2.5 2.5 0 0 0 19 7.01V7a2.5 2.5 0 0 0-4.5-1.5"/>
         </svg>
         <h3>FRANK</h3>
-        <p>First space vehicle navigation controller trained entirely with reinforcement learning.</p>
+        <div class="expand">Flexible Recurrent Active-memory Neural Kernel</div>
+        <p>Brain-inspired decision engine. Full rover autonomy in 20ms on a Raspberry Pi.</p>
       </div>
       <!-- SAPPER SWARM -->
       <div class="sol-card">
@@ -597,7 +600,7 @@
           <line x1="12" y1="9" x2="12" y2="22"/>
           <line x1="8" y1="22" x2="16" y2="22"/>
         </svg>
-        <h3>SAPPER SWARM</h3>
+        <h3>SAPPERS</h3>
         <p>Cheap, redundant rovers. $1M each vs $500M VIPER. Lose one — mission continues.</p>
       </div>
       <!-- SUNBEAM -->
@@ -713,8 +716,8 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="logo.png" alt="FRANK Autonomous" />
-        <span>FRANK<span class="as"> Autonomous</span></span>
+        <img src="flight-mark.png" alt="FRANK Autonomous flight mark" />
+        <span>FRANK <span class="as">AUTONOMOUS</span></span>
       </div>
       <div class="footer-links">
         <a href="#what">What we do</a>
