@@ -297,27 +297,32 @@
   }
 
   /* ========== TEAM ========== */
+  /* One flat tier: uniform cards, small circular avatars */
   .team-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 22px;
-    max-width: 920px;
   }
   .member-card {
-    padding: 32px;
+    flex: 0 1 300px;
+    padding: 32px 26px 28px;
     background: var(--orbit-indigo);
+    text-align: center;
     transition: background 0.2s;
   }
   .member-card:hover { background: var(--indigo-hover); }
   .member-photo {
-    width: 100%;
-    aspect-ratio: 1;
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
     background: var(--space-deep);
+    border: 1px solid var(--line-2);
     display: flex; align-items: center; justify-content: center;
-    margin-bottom: 24px;
+    margin: 0 auto 18px;
     color: var(--muted);
     font-family: var(--body);
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     overflow: hidden;
@@ -325,69 +330,23 @@
   .member-photo img { width: 100%; height: 100%; object-fit: cover; }
   .member-name {
     font-family: var(--display);
-    font-size: 26px;
+    font-size: 20px;
     margin-bottom: 4px;
   }
   .member-role {
     font-family: var(--body);
     font-weight: 700;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--signal-red);
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
   }
   .member-bio {
     color: var(--starlight);
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.55;
-    margin-bottom: 20px;
-  }
-
-  /* Secondary tier - advisors & research, compact horizontal layout */
-  .team-subhead {
-    margin-top: 56px;
-    margin-bottom: 22px;
-    font-family: var(--body);
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--slate);
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--line);
-    max-width: 920px;
-  }
-  .team-secondary {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
-    max-width: 920px;
-  }
-  .member-card.compact {
-    display: grid;
-    grid-template-columns: 96px 1fr;
-    gap: 22px;
-    padding: 24px;
-    align-items: start;
-  }
-  .member-card.compact .member-photo {
-    width: 96px; height: 96px;
-    aspect-ratio: 1;
-    margin-bottom: 0;
-  }
-  .member-card.compact .member-name {
-    font-size: 18px;
-    margin-bottom: 2px;
-  }
-  .member-card.compact .member-role {
-    font-size: 11px;
-    margin-bottom: 12px;
-  }
-  .member-card.compact .member-bio {
     font-size: 13px;
-    line-height: 1.5;
-    margin-bottom: 0;
+    font-weight: 500;
+    line-height: 1.55;
   }
 
   /* ========== CTA / CONTACT ========== */
@@ -481,10 +440,7 @@
     .hero { padding-top: 110px; }
     .hero-lockup { flex-direction: column; gap: 30px; }
     .solution-grid { grid-template-columns: 1fr; }
-    .team-grid { grid-template-columns: 1fr; }
-    .team-secondary { grid-template-columns: 1fr; }
-    .member-card.compact { grid-template-columns: 80px 1fr; gap: 18px; }
-    .member-card.compact .member-photo { width: 80px; height: 80px; }
+    .member-card { flex-basis: 100%; }
     section { padding: 78px 0; }
     .footer-grid { flex-direction: column; align-items: flex-start; }
   }
@@ -637,70 +593,57 @@
         </div>
       </div>
 
-    </div>
-
-    <div class="team-subhead reveal">Advisors &amp; Research</div>
-
-    <div class="team-secondary reveal">
-      <div class="member-card compact">
+      <div class="member-card">
         <div class="member-photo">
           <img src="scott.jpg" alt="Scott Nisbet" />
         </div>
-        <div>
-          <div class="member-name">Scott Nisbet</div>
-          <div class="member-role">Founding Advisor</div>
-          <div class="member-bio">
-            Co-Founder: Berkeley 100 Foundation, ArionBio. UC Berkeley alum.
-            Mentor at SkyDeck, Deep Tech Innovation Lab, and Neurotech Collider Lab.
-            Speaker, mentor, and coach for UC Berkeley SCET BMoE Bootcamp.
-          </div>
+        <div class="member-name">Scott Nisbet</div>
+        <div class="member-role">Founding Advisor</div>
+        <div class="member-bio">
+          Co-Founder: Berkeley 100 Foundation, ArionBio. UC Berkeley alum.
+          Mentor at SkyDeck, Deep Tech Innovation Lab, and Neurotech Collider Lab.
+          Speaker, mentor, and coach for UC Berkeley SCET BMoE Bootcamp.
         </div>
       </div>
 
-      <div class="member-card compact">
+      <div class="member-card">
         <div class="member-photo">
           <img src="maggie.jpg" alt="Maggie Johnson" />
         </div>
-        <div>
-          <div class="member-name">Maggie Johnson</div>
-          <div class="member-role">Contract R&amp;D Engineer</div>
-          <div class="member-bio">
-            USAF veteran. Honors Mechanical Engineering, Barrett Honors College at ASU.
-            Space optics intern, NASA Marshall Space Flight Center.
-            Patent in progress for a hazardous waste filtration system.
-            SolidWorks and MATLAB.
-          </div>
+        <div class="member-name">Maggie Johnson</div>
+        <div class="member-role">Contract R&amp;D Engineer</div>
+        <div class="member-bio">
+          USAF veteran. Honors Mechanical Engineering, Barrett Honors College at ASU.
+          Space optics intern, NASA Marshall Space Flight Center.
+          Patent in progress for a hazardous waste filtration system.
+          SolidWorks and MATLAB.
         </div>
       </div>
 
-      <div class="member-card compact">
+      <div class="member-card">
         <div class="member-photo">
           <img src="website_pic.jpg" alt="Brandon LiWang" />
         </div>
-        <div>
-          <div class="member-name">Brandon LiWang</div>
-          <div class="member-role">Research Associate</div>
-          <div class="member-bio">
-            Hardware Engineer, Sentradel. UC Berkeley Mechanical Engineering.
-            IEEE-published on autonomous gas source detection.
-            UC Merced MESA Lab: UGV sim-to-real.
-          </div>
+        <div class="member-name">Brandon LiWang</div>
+        <div class="member-role">Research Associate</div>
+        <div class="member-bio">
+          Hardware Engineer, Sentradel. UC Berkeley Mechanical Engineering.
+          IEEE-published on autonomous gas source detection.
+          UC Merced MESA Lab: UGV sim-to-real.
         </div>
       </div>
 
-      <div class="member-card compact">
+      <div class="member-card">
         <div class="member-photo">
           <img src="aaron.jpg" alt="Aaron Shey" />
         </div>
-        <div>
-          <div class="member-name">Aaron Shey</div>
-          <div class="member-role">Associate Researcher</div>
-          <div class="member-bio">
-            UC Berkeley Cognitive Science.
-            Research apprentice at Berkeley's DNA Sequencing Facility (URAP):
-            Linux administration and Python pipelines on Savio, Berkeley's supercomputer.
-            Bioinformatics and HPC.
-          </div>
+        <div class="member-name">Aaron Shey</div>
+        <div class="member-role">Associate Researcher</div>
+        <div class="member-bio">
+          UC Berkeley Cognitive Science.
+          Research apprentice at Berkeley's DNA Sequencing Facility (URAP):
+          Linux administration and Python pipelines on Savio, Berkeley's supercomputer.
+          Bioinformatics and HPC.
         </div>
       </div>
     </div>
