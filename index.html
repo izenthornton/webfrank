@@ -468,6 +468,30 @@
     color: var(--starlight);
     text-transform: uppercase;
   }
+
+  /* Copy-to-clipboard toast (email fallback) */
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 32px;
+    transform: translateX(-50%) translateY(16px);
+    background: var(--orbit-indigo);
+    border: 1px solid var(--signal-red);
+    color: var(--lunar-white);
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 13px 20px;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 </style>
 </head>
 <body>
@@ -719,6 +743,39 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Email buttons: keep native mailto, but always give visible feedback by
+  // copying the address to the clipboard (handles machines with no mail client).
+  (function () {
+    let toast;
+    let hideTimer;
+    function showToast(msg) {
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = msg;
+      void toast.offsetWidth; // force reflow so the transition plays
+      toast.classList.add('show');
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+      link.addEventListener('click', () => {
+        const addr = link.getAttribute('href').replace('mailto:', '').split('?')[0];
+        // Always give feedback (surfaces the address even if nothing else works).
+        showToast(addr);
+        // Upgrade the message if we can copy to the clipboard.
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(addr)
+            .then(() => showToast('Copied to clipboard: ' + addr))
+            .catch(() => {});
+        }
+        // Native mailto still fires for anyone with a mail client set up.
+      });
+    });
+  })();
 </script>
 
 </body>
