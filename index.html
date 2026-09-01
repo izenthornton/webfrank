@@ -313,6 +313,13 @@
   /* The Team is three people; three across fills the row instead of
      leaving a fourth column empty. */
   .people-grid.three { grid-template-columns: repeat(3, 1fr); }
+  /* The Team is the section investors look at first, and its cards are wider
+     than the four-across ones, so the avatars scale up to match. */
+  .people-grid.three .member-photo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 22px;
+  }
   .member-card {
     display: flex;
     flex-direction: column;
@@ -941,17 +948,11 @@
     </div>
 
     <div class="partners-grid reveal">
-      <a class="partner-card" href="https://www.nvidia.com/en-us/startups/" target="_blank" rel="noopener noreferrer">
-        <div class="partner-logo">
-          <img src="img/partners/nvidia-inception.png" alt="NVIDIA Inception Program" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
-        </div>
-        <div class="partner-name">NVIDIA Inception</div>
-      </a>
       <a class="partner-card" href="https://deeptech.berkeley.edu/" target="_blank" rel="noopener noreferrer">
         <div class="partner-logo">
-          <img src="img/partners/berkeley-deep-tech.png" alt="Berkeley Deep Tech Innovation Lab" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
+          <img src="img/partners/berkeley-deep-tech.png" alt="UC Berkeley Deep Tech Innovation Lab" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
         </div>
-        <div class="partner-name">Berkeley Deep Tech<br />Innovation Lab</div>
+        <div class="partner-name">UC Berkeley Deep Tech<br />Innovation Lab</div>
       </a>
       <a class="partner-card" href="https://www.joinef.com/" target="_blank" rel="noopener noreferrer">
         <div class="partner-logo">
@@ -964,6 +965,12 @@
           <img src="img/partners/fictionlab.png" alt="FictionLab" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
         </div>
         <div class="partner-name">FictionLab</div>
+      </a>
+      <a class="partner-card" href="https://www.nvidia.com/en-us/startups/" target="_blank" rel="noopener noreferrer">
+        <div class="partner-logo">
+          <img src="img/partners/nvidia-inception.png" alt="NVIDIA Inception Program" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
+        </div>
+        <div class="partner-name">NVIDIA Inception</div>
       </a>
     </div>
   </div>
