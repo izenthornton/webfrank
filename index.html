@@ -317,6 +317,7 @@
     transition: background 0.2s;
   }
   .member-card:hover { background: var(--indigo-hover); }
+  .team-grid.four .member-card { flex-basis: 268px; }
   .member-photo {
     width: 104px;
     height: 104px;
@@ -352,6 +353,86 @@
     font-size: 13px;
     font-weight: 500;
     line-height: 1.55;
+  }
+
+  /* ========== SUBSECTIONS (Research Group tiers) ========== */
+  .subsection + .subsection { margin-top: 58px; }
+  .subsection-title {
+    font-family: var(--display);
+    font-size: 22px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lunar-white);
+    margin: 0 0 22px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line-2);
+  }
+
+  /* Placeholder (unfilled) slots */
+  .member-card.open {
+    background: transparent;
+    border: 1px dashed var(--line-2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .member-card.open:hover {
+    background: rgba(255,255,255,0.02);
+    border-color: rgba(230,57,70,0.45);
+  }
+  .member-card.open .member-photo {
+    background: transparent;
+    border-style: dashed;
+    color: var(--muted);
+    font-family: var(--display);
+    font-size: 18px;
+    letter-spacing: 0.08em;
+  }
+  .member-card.open .member-name {
+    color: var(--slate);
+    font-size: 17px;
+  }
+  .member-card.open .member-role { color: var(--muted); margin-bottom: 0; }
+
+  /* Research group: compact cards */
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .research-grid .member-card { padding: 26px 18px 22px; }
+  .research-grid .member-photo { width: 76px; height: 76px; margin-bottom: 14px; }
+  .research-grid .member-name { font-size: 16px; }
+  .research-grid .member-role { font-size: 10px; margin-bottom: 0; }
+  .research-grid .member-card.open .member-photo { font-size: 13px; }
+  .research-grid .member-card.open .member-name { font-size: 15px; }
+
+  /* ========== PARTNERS ========== */
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .partner-card {
+    background: var(--orbit-indigo);
+    border: 1px solid var(--line);
+    min-height: 132px;
+    padding: 34px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .partner-card:hover {
+    background: var(--indigo-hover);
+    border-color: rgba(230,57,70,0.4);
+  }
+  .partner-name {
+    font-family: var(--display);
+    font-size: clamp(16px, 1.5vw, 19px);
+    line-height: 1.22;
+    letter-spacing: 0.02em;
   }
 
   /* ========== CTA / CONTACT ========== */
@@ -445,9 +526,18 @@
     .hero { padding-top: 110px; }
     .hero-lockup { flex-direction: column; gap: 30px; }
     .solution-grid { grid-template-columns: 1fr; }
-    .member-card { flex-basis: 100%; }
+    .member-card, .team-grid.four .member-card { flex-basis: 100%; }
+    .research-grid { grid-template-columns: repeat(2, 1fr); }
     section { padding: 78px 0; }
     .footer-grid { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 1080px) {
+    .partners-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 520px) {
+    .partners-grid { grid-template-columns: 1fr; }
   }
 
   /* Mobile menu */
@@ -506,6 +596,8 @@
     <div class="nav-links">
       <a href="#what">What we do</a>
       <a href="#team">Team</a>
+      <a href="#research">Research</a>
+      <a href="#partners">Partners</a>
     </div>
     <a href="mailto:hello@frankautonomous.com" class="nav-cta">Email us</a>
     <button class="menu-toggle" aria-label="Menu" onclick="toggleMenu()">
@@ -518,7 +610,10 @@
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#what" onclick="toggleMenu()">What we do</a>
-    <a href="#team" onclick="toggleMenu()">Team</a>
+    <a href="#team" onclick="toggleMenu()">The Team</a>
+    <a href="#advisory" onclick="toggleMenu()">Advisory Board</a>
+    <a href="#research" onclick="toggleMenu()">Research Group</a>
+    <a href="#partners" onclick="toggleMenu()">Partners</a>
     <a href="mailto:hello@frankautonomous.com" onclick="toggleMenu()">Email us</a>
   </div>
 </nav>
@@ -601,11 +696,11 @@
   </div>
 </section>
 
-<!-- ============== TEAM ============== -->
+<!-- ============== THE TEAM ============== -->
 <section id="team">
   <div class="container">
     <div class="reveal">
-      <h2 class="section-title">Team</h2>
+      <h2 class="section-title">The Team</h2>
     </div>
 
     <div class="team-grid reveal">
@@ -649,20 +744,18 @@
           Bioinformatics and HPC.
         </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="member-card">
-        <div class="member-photo">
-          <img src="maggie.jpg" alt="Maggie Johnson" />
-        </div>
-        <div class="member-name">Maggie Johnson</div>
-        <div class="member-role">Contract R&amp;D Engineer</div>
-        <div class="member-bio">
-          USAF veteran. Honors Mechanical Engineering, Barrett Honors College at ASU.
-          Space optics intern, NASA Marshall Space Flight Center.
-          SolidWorks and MATLAB.
-        </div>
-      </div>
+<!-- ============== ADVISORY BOARD ============== -->
+<section id="advisory">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">Advisory Board</h2>
+    </div>
 
+    <div class="team-grid four reveal">
       <div class="member-card">
         <div class="member-photo">
           <img src="scott.jpg" alt="Scott Nisbet" />
@@ -675,6 +768,120 @@
           Speaker, mentor, and coach for UC Berkeley SCET BMoE Bootcamp.
         </div>
       </div>
+
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Advisory Board</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Advisory Board</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Advisory Board</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FRANK RESEARCH GROUP ============== -->
+<section id="research">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">FRANK Research Group</h2>
+      <p class="section-subtitle">
+        Student researchers working alongside the core team on autonomy, perception, and lunar simulation.
+      </p>
+    </div>
+
+    <div class="subsection reveal">
+      <h3 class="subsection-title">Graduate</h3>
+      <div class="research-grid">
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Graduate Researcher</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Graduate Researcher</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Graduate Researcher</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Graduate Researcher</div>
+      </div>
+      </div>
+    </div>
+
+    <div class="subsection reveal">
+      <h3 class="subsection-title">Undergraduate</h3>
+      <div class="research-grid">
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Undergraduate Researcher</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Undergraduate Researcher</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Undergraduate Researcher</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Undergraduate Researcher</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Undergraduate Researcher</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Undergraduate Researcher</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Undergraduate Researcher</div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PARTNERS ============== -->
+<section id="partners">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">Partners</h2>
+      <p class="section-subtitle">
+        Programs and institutions supporting FRANK Autonomous Systems.
+      </p>
+    </div>
+
+    <div class="partners-grid reveal">
+      <div class="partner-card"><div class="partner-name">NVIDIA Inception</div></div>
+      <div class="partner-card"><div class="partner-name">Berkeley Deep Tech<br />Innovation Lab</div></div>
+      <div class="partner-card"><div class="partner-name">Entrepreneurs First</div></div>
+      <div class="partner-card"><div class="partner-name">FictionLab</div></div>
     </div>
   </div>
 </section>
@@ -707,6 +914,8 @@
       <div class="footer-links">
         <a href="#what">What we do</a>
         <a href="#team">Team</a>
+        <a href="#research">Research</a>
+        <a href="#partners">Partners</a>
         <a href="mailto:hello@frankautonomous.com">Email us</a>
       </div>
       <div class="footer-meta">© 2026 FRANK AUTONOMOUS SYSTEMS INC.</div>
