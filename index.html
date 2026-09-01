@@ -429,6 +429,10 @@
     background: var(--indigo-hover);
     border-color: rgba(230,57,70,0.4);
   }
+  .partner-card:focus-visible {
+    outline: 2px solid var(--signal-red);
+    outline-offset: 3px;
+  }
   .partner-name {
     font-family: var(--display);
     font-size: clamp(16px, 1.5vw, 19px);
@@ -927,30 +931,30 @@
     </div>
 
     <div class="partners-grid reveal">
-      <div class="partner-card">
+      <a class="partner-card" href="https://www.nvidia.com/en-us/startups/" target="_blank" rel="noopener noreferrer">
         <div class="partner-logo">
           <img src="img/partners/nvidia-inception.png" alt="NVIDIA Inception Program" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
         </div>
         <div class="partner-name">NVIDIA Inception</div>
-      </div>
-      <div class="partner-card">
+      </a>
+      <a class="partner-card" href="https://deeptech.berkeley.edu/" target="_blank" rel="noopener noreferrer">
         <div class="partner-logo">
           <img src="img/partners/berkeley-deep-tech.png" alt="Berkeley Deep Tech Innovation Lab" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
         </div>
         <div class="partner-name">Berkeley Deep Tech<br />Innovation Lab</div>
-      </div>
-      <div class="partner-card">
+      </a>
+      <a class="partner-card" href="https://www.joinef.com/" target="_blank" rel="noopener noreferrer">
         <div class="partner-logo">
           <img src="img/partners/entrepreneurs-first.png" alt="Entrepreneurs First" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
         </div>
         <div class="partner-name">Entrepreneurs First</div>
-      </div>
-      <div class="partner-card">
+      </a>
+      <a class="partner-card" href="https://fictionlab.pl/" target="_blank" rel="noopener noreferrer">
         <div class="partner-logo">
           <img src="img/partners/fictionlab.png" alt="FictionLab" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
         </div>
         <div class="partner-name">FictionLab</div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
