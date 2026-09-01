@@ -4,18 +4,18 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>FRANK Autonomous | The first autonomous site survey on the Moon</title>
-<meta name="description" content="The autonomy layer for the planetary economy. The first autonomous site survey on the Moon. Targeting CLPS delivery in 2029." />
-<link rel="icon" type="image/png" href="favicon.png" />
+<meta name="description" content="The autonomy layer for the planetary economy. The first autonomous site survey on the Moon. Mission 1 landing in 2028." />
+<link rel="icon" type="image/png" href="img/brand/favicon.png" />
 
 <!-- Open Graph / Twitter for link previews -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="FRANK Autonomous | The first autonomous site survey on the Moon" />
-<meta property="og:description" content="The autonomy layer for the planetary economy. Targeting CLPS delivery in 2029." />
-<meta property="og:image" content="https://frankautonomous.com/og-card.png" />
+<meta property="og:description" content="The autonomy layer for the planetary economy. Mission 1 landing in 2028." />
+<meta property="og:image" content="https://frankautonomous.com/img/brand/og-card.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="FRANK Autonomous" />
-<meta name="twitter:description" content="The first autonomous site survey on the Moon. Targeting CLPS delivery in 2029." />
-<meta name="twitter:image" content="https://frankautonomous.com/og-card.png" />
+<meta name="twitter:description" content="The first autonomous site survey on the Moon. Mission 1 landing in 2028." />
+<meta name="twitter:image" content="https://frankautonomous.com/img/brand/og-card.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -63,7 +63,7 @@
   body::before {
     content: '';
     position: fixed; inset: 0;
-    background: url('bg-starfield.png') center / cover no-repeat var(--deep-space);
+    background: url('img/brand/bg-starfield.png') center / cover no-repeat var(--deep-space);
     pointer-events: none;
     z-index: 0;
   }
@@ -184,7 +184,7 @@
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
-    max-width: 640px;
+    max-width: 720px;
     margin: 0 auto;
   }
   .proof-chip {
@@ -301,16 +301,16 @@
     line-height: 1.5;
   }
 
-  /* ========== TEAM ========== */
-  /* One flat tier: uniform cards, small circular avatars */
-  .team-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  /* ========== PEOPLE ========== */
+  /* Every person - team, advisory board, research group - gets the same box:
+     one four-column grid, so cards match in width across sections and in
+     height across a row. */
+  .people-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 22px;
   }
   .member-card {
-    flex: 0 1 300px;
     padding: 32px 26px 28px;
     background: var(--orbit-indigo);
     text-align: center;
@@ -352,6 +352,88 @@
     font-size: 13px;
     font-weight: 500;
     line-height: 1.55;
+  }
+
+  /* ========== SUBSECTIONS (Research Group tiers) ========== */
+  .subsection + .subsection { margin-top: 58px; }
+  .subsection-title {
+    font-family: var(--display);
+    font-size: 22px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lunar-white);
+    margin: 0 0 22px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line-2);
+  }
+
+  /* Placeholder (unfilled) slots */
+  .member-card.open {
+    background: transparent;
+    border: 1px dashed var(--line-2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .member-card.open:hover {
+    background: rgba(255,255,255,0.02);
+    border-color: rgba(230,57,70,0.45);
+  }
+  .member-card.open .member-photo {
+    background: transparent;
+    border-style: dashed;
+    color: var(--muted);
+    font-family: var(--display);
+    font-size: 18px;
+    letter-spacing: 0.08em;
+  }
+  .member-card.open .member-name {
+    color: var(--slate);
+    font-size: 17px;
+  }
+  .member-card.open .member-role { color: var(--muted); margin-bottom: 0; }
+
+  /* ========== PARTNERS ========== */
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .partner-card {
+    background: var(--orbit-indigo);
+    border: 1px solid var(--line);
+    min-height: 132px;
+    padding: 26px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    text-align: center;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .partner-card.no-logo { justify-content: center; }
+  /* Supplied logos are dark-on-white or full-bleed colour, so they sit on a
+     light plate rather than straight on the Deep Space panel. */
+  .partner-logo {
+    width: 100%;
+    height: 104px;
+    background: var(--lunar-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 22px;
+  }
+  .partner-logo img { max-height: 100%; max-width: 100%; width: auto; object-fit: contain; }
+  .partner-card:hover {
+    background: var(--indigo-hover);
+    border-color: rgba(230,57,70,0.4);
+  }
+  .partner-name {
+    font-family: var(--display);
+    font-size: clamp(16px, 1.5vw, 19px);
+    line-height: 1.22;
+    letter-spacing: 0.02em;
   }
 
   /* ========== CTA / CONTACT ========== */
@@ -414,7 +496,7 @@
     color: var(--muted);
     letter-spacing: 0.06em;
   }
-  .footer-links { display: flex; gap: 22px; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 12px 22px; }
   .footer-links a {
     font-family: var(--body);
     font-weight: 700;
@@ -445,9 +527,27 @@
     .hero { padding-top: 110px; }
     .hero-lockup { flex-direction: column; gap: 30px; }
     .solution-grid { grid-template-columns: 1fr; }
-    .member-card { flex-basis: 100%; }
+    .people-grid { grid-template-columns: repeat(2, 1fr); }
     section { padding: 78px 0; }
     .footer-grid { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 1080px) {
+    .partners-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* The contact button carries a 25-character address; at the narrowest
+     phone widths it needs to give back some padding and tracking. */
+  @media (max-width: 400px) {
+    .btn { padding: 14px 18px; font-size: 11px; letter-spacing: 0.1em; }
+  }
+
+  @media (max-width: 620px) {
+    .people-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 520px) {
+    .partners-grid { grid-template-columns: 1fr; }
   }
 
   /* Mobile menu */
@@ -500,12 +600,14 @@
 <nav class="top">
   <div class="nav-inner">
     <a href="#top" class="nav-brand">
-      <img src="flight-mark.png" alt="FRANK Autonomous flight mark" />
+      <img src="img/brand/flight-mark.png" alt="FRANK Autonomous flight mark" />
       <span>FRANK <span class="as">AUTONOMOUS</span></span>
     </a>
     <div class="nav-links">
       <a href="#what">What we do</a>
       <a href="#team">Team</a>
+      <a href="#research">Research</a>
+      <a href="#partners">Partners</a>
     </div>
     <a href="mailto:hello@frankautonomous.com" class="nav-cta">Email us</a>
     <button class="menu-toggle" aria-label="Menu" onclick="toggleMenu()">
@@ -518,7 +620,10 @@
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#what" onclick="toggleMenu()">What we do</a>
-    <a href="#team" onclick="toggleMenu()">Team</a>
+    <a href="#team" onclick="toggleMenu()">The Team</a>
+    <a href="#advisory" onclick="toggleMenu()">Advisory Board</a>
+    <a href="#research" onclick="toggleMenu()">Research Group</a>
+    <a href="#partners" onclick="toggleMenu()">Partners</a>
     <a href="mailto:hello@frankautonomous.com" onclick="toggleMenu()">Email us</a>
   </div>
 </nav>
@@ -528,11 +633,11 @@
   <div class="container">
     <div class="hero-grid">
       <div class="hero-lockup">
-        <img src="flight-mark.png" alt="FRANK Autonomous flight mark" />
+        <img src="img/brand/flight-mark.png" alt="FRANK Autonomous flight mark" />
         <h1 class="hero-title">FRANK<span class="as">AUTONOMOUS</span></h1>
       </div>
       <p class="hero-sub">
-        The first autonomous site survey on the Moon. Targeting CLPS delivery in 2029.
+        The first autonomous site survey on the Moon. Mission 1 landing in 2028.
       </p>
       <div class="hero-actions">
         <a href="mailto:hello@frankautonomous.com" class="btn btn-primary">
@@ -540,11 +645,10 @@
         </a>
       </div>
       <div class="proof-strip">
-        <span class="proof-chip"><span class="dot"></span>Autonomy layer</span>
-        <span class="proof-chip"><span class="dot"></span>Lunar sim</span>
-        <span class="proof-chip"><span class="dot"></span>Research papers</span>
-        <span class="proof-break"></span>
-        <span class="proof-chip hl"><span class="dot"></span>All built in-house</span>
+        <span class="proof-chip"><span class="dot"></span>Provisional patent filed</span>
+        <span class="proof-chip"><span class="dot"></span>Two preprints public</span>
+        <span class="proof-chip"><span class="dot"></span>Runs onboard on real hardware</span>
+        <span class="proof-chip hl"><span class="dot"></span>Autonomy built in-house</span>
       </div>
     </div>
   </div>
@@ -557,7 +661,9 @@
       <h2 class="section-title">What we do</h2>
       <p class="section-subtitle">
         FRANK Autonomous Systems builds the autonomy layer for planetary rovers.
-        Mission 1 puts the first autonomous swarm on the Moon: hazard mapping and site-characterisation surveys first, subsurface mineral prospecting second. Ground-truth data the lunar economy needs.
+        Mission 1 lands a 5 kg solar rover on the Shackleton rim in 2028 to survey the
+        region NASA has named for its surface reactor. Sub-meter site data that orbit
+        cannot resolve and teleoperation cannot afford.
       </p>
     </div>
 
@@ -570,7 +676,7 @@
         </svg>
         <h3>FRANK</h3>
         <div class="expand">Flexible Recurrent Active-memory Neural Kernel</div>
-        <p>Brain-inspired decision engine. Full rover autonomy in 20ms on a Raspberry Pi.</p>
+        <p>Brain-inspired decision engine. 507K parameters, trained with reinforcement learning from scratch. Runs onboard on a Raspberry Pi.</p>
       </div>
       <!-- SAPPER SWARM -->
       <div class="sol-card">
@@ -584,7 +690,7 @@
           <line x1="8" y1="22" x2="16" y2="22"/>
         </svg>
         <h3>SAPPERS</h3>
-        <p>Cheap, redundant rovers. $1M each vs $500M VIPER. Lose one, mission continues.</p>
+        <p>A 5 kg solar rover, $1M to $2.5M delivered to the surface. Small because the autonomy is small.</p>
       </div>
       <!-- SUNBEAM -->
       <div class="sol-card">
@@ -601,71 +707,65 @@
   </div>
 </section>
 
-<!-- ============== TEAM ============== -->
+<!-- ============== THE TEAM ============== -->
 <section id="team">
   <div class="container">
     <div class="reveal">
-      <h2 class="section-title">Team</h2>
+      <h2 class="section-title">The Team</h2>
     </div>
 
-    <div class="team-grid reveal">
+    <div class="people-grid reveal">
       <div class="member-card">
         <div class="member-photo">
-          <img src="izen pic.JPG" alt="Izen Thornton" />
+          <img src="img/people/izen-thornton.jpg" alt="Izen Thornton" />
         </div>
         <div class="member-name">Izen Thornton</div>
         <div class="member-role">Founder &amp; CEO</div>
         <div class="member-bio">
-          Senior Autonomous Systems Test Pilot. CAP UAS Check Pilot Examiner. 400+ hours.
-          Employee #6 at DoorDash Drone Delivery, founding flight test team.
-          Built FRANK from scratch.
-          FEMA/AFRCC certified incident manager.
+          Built FRANK end to end. Employee #6 on DoorDash's drone flight-operations team.
+          400+ UAS hours. CAP UAS Check Pilot Examiner. FEMA Planning Section Chief.
         </div>
       </div>
 
       <div class="member-card">
         <div class="member-photo">
-          <img src="website_pic.jpg" alt="Brandon LiWang" />
+          <img src="img/people/brandon-liwang.jpg" alt="Brandon LiWang" />
         </div>
         <div class="member-name">Brandon LiWang</div>
-        <div class="member-role">Founding Engineer</div>
+        <div class="member-role">Hardware &amp; Test</div>
         <div class="member-bio">
-          Hardware Engineer, Sentradel. UC Berkeley Mechanical Engineering.
-          IEEE-published on autonomous gas source detection.
-          UC Merced MESA Lab: UGV sim-to-real.
+          Owns the runtime, link layer and field test. UC Berkeley MEng; UAVs@Berkeley.
+          Hardware Engineer at Sentradel. IEEE-published on autonomous gas source detection.
         </div>
       </div>
 
       <div class="member-card">
         <div class="member-photo">
-          <img src="aaron.jpg" alt="Aaron Shey" />
+          <img src="img/people/aaron-shey.jpg" alt="Aaron Shey" />
         </div>
         <div class="member-name">Aaron Shey</div>
-        <div class="member-role">Founding Engineer</div>
+        <div class="member-role">Software &amp; ML</div>
         <div class="member-bio">
-          UC Berkeley Cognitive Science.
+          Owns the policy and the simulator. UC Berkeley Cognitive Science.
           Research apprentice at Berkeley's DNA Sequencing Facility (URAP):
-          Linux administration and Python pipelines on Savio, Berkeley's supercomputer.
-          Bioinformatics and HPC.
+          Python pipelines on Savio, Berkeley's supercomputer.
         </div>
       </div>
+    </div>
+  </div>
+</section>
 
+<!-- ============== ADVISORY BOARD ============== -->
+<section id="advisory">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">Advisory Board</h2>
+    </div>
+
+    <div class="people-grid reveal">
       <div class="member-card">
         <div class="member-photo">
-          <img src="maggie.jpg" alt="Maggie Johnson" />
-        </div>
-        <div class="member-name">Maggie Johnson</div>
-        <div class="member-role">Contract R&amp;D Engineer</div>
-        <div class="member-bio">
-          USAF veteran. Honors Mechanical Engineering, Barrett Honors College at ASU.
-          Space optics intern, NASA Marshall Space Flight Center.
-          SolidWorks and MATLAB.
-        </div>
-      </div>
-
-      <div class="member-card">
-        <div class="member-photo">
-          <img src="scott.jpg" alt="Scott Nisbet" />
+          <img src="img/people/scott-nisbet.jpg" alt="Scott Nisbet" />
         </div>
         <div class="member-name">Scott Nisbet</div>
         <div class="member-role">Founding Advisor</div>
@@ -674,6 +774,182 @@
           Mentor at SkyDeck, Deep Tech Innovation Lab, and Neurotech Collider Lab.
           Speaker, mentor, and coach for UC Berkeley SCET BMoE Bootcamp.
         </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-photo">
+          <img src="img/people/aaron-estrada.webp" alt="Aaron Estrada" />
+        </div>
+        <div class="member-name">Aaron Estrada</div>
+        <div class="member-role">Planetary Robotics Advisor</div>
+        <div class="member-bio">
+          Mission Operations Engineer at Xona Space. NASA Lunabotics;
+          IMAP CubeSat collaboration. TT&amp;C, navigation, and planetary rover systems.
+          BS Electrical Engineering, Sonoma State. MS Space Systems Engineering,
+          Johns Hopkins. Civil Air Patrol emergency services.
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-photo">
+          <img src="img/people/michael-thornton.webp" alt="Michael Thornton" />
+        </div>
+        <div class="member-name">Michael Thornton</div>
+        <div class="member-role">Software Architecture Advisor</div>
+        <div class="member-bio">
+          DevOps Architect at Zscaler. Software architect at Bluebeam,
+          Recharge Payments, and Pulse Secure, where he architected a Zero Trust
+          microservice platform. 25 years of distributed systems and platform design.
+          Writes Dev Details.
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-photo">
+          <img src="img/people/demir-erkiralp.webp" alt="Demir Erkiralp" />
+        </div>
+        <div class="member-name">Demir Erkiralp</div>
+        <div class="member-role">Space Systems Advisor</div>
+        <div class="member-bio">
+          UIUC Aerospace Engineering. AIAA Nuclear and Future Flight
+          Propulsion Technical Committee; discipline chair for SciTech 2027.
+          ANS 31.1 standards working group. First-author papers on nuclear thermal
+          propulsion and regenerative cooling. Past President, Liquid Rocketry at
+          Illinois. EF Fellow.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FRANK RESEARCH GROUP ============== -->
+<section id="research">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">FRANK Research Group</h2>
+      <p class="section-subtitle">
+        Student researchers working alongside the core team on machine learning, architecture, and autonomy.
+      </p>
+    </div>
+
+    <div class="subsection reveal">
+      <h3 class="subsection-title">Graduate</h3>
+      <div class="people-grid">
+      <div class="member-card">
+        <div class="member-photo">
+          <img src="img/people/ronan-eltherington.webp" alt="Ronan Eltherington" />
+        </div>
+        <div class="member-name">Ronan Eltherington</div>
+        <div class="member-role">Graduate Researcher</div>
+        <div class="member-bio">Master of Translational Medicine, UC Berkeley &amp; UCSF.</div>
+      </div>
+      <div class="member-card">
+        <div class="member-photo">
+          <img src="img/people/arash-mohammady.webp" alt="Arash Mohammady" />
+        </div>
+        <div class="member-name">Arash Mohammady</div>
+        <div class="member-role">Graduate Researcher</div>
+        <div class="member-bio">Master of Translational Medicine, UC Berkeley &amp; UCSF.</div>
+      </div>
+      <div class="member-card">
+        <div class="member-photo">
+          <img src="img/people/inbeom-song.jpg" alt="Inbeom Song" />
+        </div>
+        <div class="member-name">Inbeom Song</div>
+        <div class="member-role">Graduate Researcher</div>
+        <div class="member-bio">Master of Translational Medicine, UC Berkeley &amp; UCSF.</div>
+      </div>
+      <div class="member-card">
+        <div class="member-photo">
+          <img src="img/people/han-jiun-ke.jpg" alt="Han-Jiun Ke" />
+        </div>
+        <div class="member-name">Han-Jiun Ke</div>
+        <div class="member-role">Graduate Researcher</div>
+        <div class="member-bio">Masters of Bioengineering, UC Berkeley.</div>
+      </div>
+      </div>
+    </div>
+
+    <!-- TEMPORARILY HIDDEN: Undergraduate tier. Delete this comment line and the
+       closing one below to bring the seven slots back.
+<div class="subsection reveal">
+      <h3 class="subsection-title">Undergraduate</h3>
+      <div class="people-grid">
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Undergraduate Researcher</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Undergraduate Researcher</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Undergraduate Researcher</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Undergraduate Researcher</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Undergraduate Researcher</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Undergraduate Researcher</div>
+      </div>
+      <div class="member-card open">
+        <div class="member-photo">TBA</div>
+        <div class="member-name">To be announced</div>
+        <div class="member-role">Undergraduate Researcher</div>
+      </div>
+      </div>
+    -->
+</div>
+  </div>
+</section>
+
+<!-- ============== PARTNERS ============== -->
+<section id="partners">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">Partners</h2>
+      <p class="section-subtitle">
+        Programs and institutions supporting FRANK Autonomous Systems.
+      </p>
+    </div>
+
+    <div class="partners-grid reveal">
+      <div class="partner-card">
+        <div class="partner-logo">
+          <img src="img/partners/nvidia-inception.png" alt="NVIDIA Inception Program" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
+        </div>
+        <div class="partner-name">NVIDIA Inception</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo">
+          <img src="img/partners/berkeley-deep-tech.png" alt="Berkeley Deep Tech Innovation Lab" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
+        </div>
+        <div class="partner-name">Berkeley Deep Tech<br />Innovation Lab</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo">
+          <img src="img/partners/entrepreneurs-first.png" alt="Entrepreneurs First" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
+        </div>
+        <div class="partner-name">Entrepreneurs First</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo">
+          <img src="img/partners/fictionlab.png" alt="FictionLab" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
+        </div>
+        <div class="partner-name">FictionLab</div>
       </div>
     </div>
   </div>
@@ -701,12 +977,14 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="flight-mark.png" alt="FRANK Autonomous flight mark" />
+        <img src="img/brand/flight-mark.png" alt="FRANK Autonomous flight mark" />
         <span>FRANK <span class="as">AUTONOMOUS</span></span>
       </div>
       <div class="footer-links">
         <a href="#what">What we do</a>
         <a href="#team">Team</a>
+        <a href="#research">Research</a>
+        <a href="#partners">Partners</a>
         <a href="mailto:hello@frankautonomous.com">Email us</a>
       </div>
       <div class="footer-meta">© 2026 FRANK AUTONOMOUS SYSTEMS INC.</div>
