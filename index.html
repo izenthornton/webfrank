@@ -310,6 +310,9 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 22px;
   }
+  /* The Team is three people; three across fills the row instead of
+     leaving a fourth column empty. */
+  .people-grid.three { grid-template-columns: repeat(3, 1fr); }
   .member-card {
     display: flex;
     flex-direction: column;
@@ -356,26 +359,10 @@
     line-height: 1.55;
   }
 
-  /* margin-top:auto pins the icon to the card floor, so the row of icons
-     lines up even though the bios above them differ in length. */
-  .member-links {
-    display: flex;
-    justify-content: center;
-    margin-top: auto;
-    padding-top: 16px;
-  }
-  .member-links a {
-    display: inline-flex;
-    padding: 4px;
-    color: var(--muted);
-    transition: color 0.15s;
-  }
-  .member-links a:hover { color: var(--signal-red); }
-  .member-links a:focus-visible {
+  .member-card:focus-visible {
     outline: 2px solid var(--signal-red);
-    outline-offset: 2px;
+    outline-offset: 3px;
   }
-  .member-links svg { width: 18px; height: 18px; }
 
   /* ========== SUBSECTIONS (Research Group tiers) ========== */
   .subsection + .subsection { margin-top: 58px; }
@@ -554,7 +541,7 @@
     .hero { padding-top: 110px; }
     .hero-lockup { flex-direction: column; gap: 30px; }
     .solution-grid { grid-template-columns: 1fr; }
-    .people-grid { grid-template-columns: repeat(2, 1fr); }
+    .people-grid, .people-grid.three { grid-template-columns: repeat(2, 1fr); }
     section { padding: 78px 0; }
     .footer-grid { flex-direction: column; align-items: flex-start; }
   }
@@ -570,7 +557,7 @@
   }
 
   @media (max-width: 620px) {
-    .people-grid { grid-template-columns: 1fr; }
+    .people-grid, .people-grid.three { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 520px) {
@@ -741,8 +728,8 @@
       <h2 class="section-title">The Team</h2>
     </div>
 
-    <div class="people-grid reveal">
-      <div class="member-card">
+    <div class="people-grid three reveal">
+      <a class="member-card" href="https://www.linkedin.com/in/izen/" target="_blank" rel="noopener noreferrer" aria-label="Izen Thornton on LinkedIn">
         <div class="member-photo">
           <img src="img/people/izen-thornton.jpg" alt="Izen Thornton" />
         </div>
@@ -752,10 +739,9 @@
           Built FRANK end to end. Employee #6 on DoorDash's drone flight-operations team.
           400+ UAS hours. CAP UAS Check Pilot Examiner. FEMA Planning Section Chief.
         </div>
-        <div class="member-links"><a href="https://www.linkedin.com/in/izen/" target="_blank" rel="noopener noreferrer" aria-label="Izen Thornton on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 21.5h5.16V9.2H2.4zM9.9 9.2h4.95v1.68h.07c.69-1.24 2.37-2.55 4.88-2.55 5.22 0 6.18 3.3 6.18 7.6v5.57h-5.16v-4.94c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.29-1.96 2.62v5.02H9.9z"/></svg></a></div>
-      </div>
+      </a>
 
-      <div class="member-card">
+      <a class="member-card" href="https://www.linkedin.com/in/brandon-liwang-1a8792318/" target="_blank" rel="noopener noreferrer" aria-label="Brandon LiWang on LinkedIn">
         <div class="member-photo">
           <img src="img/people/brandon-liwang.jpg" alt="Brandon LiWang" />
         </div>
@@ -765,10 +751,9 @@
           Owns the runtime, link layer and field test. UC Berkeley MEng; UAVs@Berkeley.
           Hardware Engineer at Sentradel. IEEE-published on autonomous gas source detection.
         </div>
-        <div class="member-links"><a href="https://www.linkedin.com/in/brandon-liwang-1a8792318/" target="_blank" rel="noopener noreferrer" aria-label="Brandon LiWang on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 21.5h5.16V9.2H2.4zM9.9 9.2h4.95v1.68h.07c.69-1.24 2.37-2.55 4.88-2.55 5.22 0 6.18 3.3 6.18 7.6v5.57h-5.16v-4.94c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.29-1.96 2.62v5.02H9.9z"/></svg></a></div>
-      </div>
+      </a>
 
-      <div class="member-card">
+      <a class="member-card" href="https://www.linkedin.com/in/aaron-z-shey/" target="_blank" rel="noopener noreferrer" aria-label="Aaron Shey on LinkedIn">
         <div class="member-photo">
           <img src="img/people/aaron-shey.jpg" alt="Aaron Shey" />
         </div>
@@ -779,8 +764,7 @@
           Research apprentice at Berkeley's DNA Sequencing Facility (URAP):
           Python pipelines on Savio, Berkeley's supercomputer.
         </div>
-        <div class="member-links"><a href="https://www.linkedin.com/in/aaron-z-shey/" target="_blank" rel="noopener noreferrer" aria-label="Aaron Shey on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 21.5h5.16V9.2H2.4zM9.9 9.2h4.95v1.68h.07c.69-1.24 2.37-2.55 4.88-2.55 5.22 0 6.18 3.3 6.18 7.6v5.57h-5.16v-4.94c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.29-1.96 2.62v5.02H9.9z"/></svg></a></div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -793,7 +777,7 @@
     </div>
 
     <div class="people-grid reveal">
-      <div class="member-card">
+      <a class="member-card" href="https://www.linkedin.com/in/scott-nisbet-993676154/" target="_blank" rel="noopener noreferrer" aria-label="Scott Nisbet on LinkedIn">
         <div class="member-photo">
           <img src="img/people/scott-nisbet.jpg" alt="Scott Nisbet" />
         </div>
@@ -804,10 +788,9 @@
           Mentor at SkyDeck, Deep Tech Innovation Lab, and Neurotech Collider Lab.
           Speaker, mentor, and coach for UC Berkeley SCET BMoE Bootcamp.
         </div>
-        <div class="member-links"><a href="https://www.linkedin.com/in/scott-nisbet-993676154/" target="_blank" rel="noopener noreferrer" aria-label="Scott Nisbet on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 21.5h5.16V9.2H2.4zM9.9 9.2h4.95v1.68h.07c.69-1.24 2.37-2.55 4.88-2.55 5.22 0 6.18 3.3 6.18 7.6v5.57h-5.16v-4.94c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.29-1.96 2.62v5.02H9.9z"/></svg></a></div>
-      </div>
+      </a>
 
-      <div class="member-card">
+      <a class="member-card" href="https://www.linkedin.com/in/aviationraptor/" target="_blank" rel="noopener noreferrer" aria-label="Aaron Estrada on LinkedIn">
         <div class="member-photo">
           <img src="img/people/aaron-estrada.webp" alt="Aaron Estrada" />
         </div>
@@ -819,10 +802,9 @@
           BS Electrical Engineering, Sonoma State. MS Space Systems Engineering,
           Johns Hopkins. Civil Air Patrol emergency services.
         </div>
-        <div class="member-links"><a href="https://www.linkedin.com/in/aviationraptor/" target="_blank" rel="noopener noreferrer" aria-label="Aaron Estrada on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 21.5h5.16V9.2H2.4zM9.9 9.2h4.95v1.68h.07c.69-1.24 2.37-2.55 4.88-2.55 5.22 0 6.18 3.3 6.18 7.6v5.57h-5.16v-4.94c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.29-1.96 2.62v5.02H9.9z"/></svg></a></div>
-      </div>
+      </a>
 
-      <div class="member-card">
+      <a class="member-card" href="https://www.linkedin.com/in/devdetails/" target="_blank" rel="noopener noreferrer" aria-label="Michael Thornton on LinkedIn">
         <div class="member-photo">
           <img src="img/people/michael-thornton.webp" alt="Michael Thornton" />
         </div>
@@ -834,10 +816,9 @@
           microservice platform. 25 years of distributed systems and platform design.
           Writes Dev Details.
         </div>
-        <div class="member-links"><a href="https://www.linkedin.com/in/devdetails/" target="_blank" rel="noopener noreferrer" aria-label="Michael Thornton on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 21.5h5.16V9.2H2.4zM9.9 9.2h4.95v1.68h.07c.69-1.24 2.37-2.55 4.88-2.55 5.22 0 6.18 3.3 6.18 7.6v5.57h-5.16v-4.94c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.29-1.96 2.62v5.02H9.9z"/></svg></a></div>
-      </div>
+      </a>
 
-      <div class="member-card">
+      <a class="member-card" href="https://www.linkedin.com/in/demir-can-erkiralp/" target="_blank" rel="noopener noreferrer" aria-label="Demir Erkiralp on LinkedIn">
         <div class="member-photo">
           <img src="img/people/demir-erkiralp.webp" alt="Demir Erkiralp" />
         </div>
@@ -850,8 +831,7 @@
           propulsion and regenerative cooling. Past President, Liquid Rocketry at
           Illinois. EF Fellow.
         </div>
-        <div class="member-links"><a href="https://www.linkedin.com/in/demir-can-erkiralp/" target="_blank" rel="noopener noreferrer" aria-label="Demir Erkiralp on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 21.5h5.16V9.2H2.4zM9.9 9.2h4.95v1.68h.07c.69-1.24 2.37-2.55 4.88-2.55 5.22 0 6.18 3.3 6.18 7.6v5.57h-5.16v-4.94c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.29-1.96 2.62v5.02H9.9z"/></svg></a></div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -869,42 +849,38 @@
     <div class="subsection reveal">
       <h3 class="subsection-title">Graduate</h3>
       <div class="people-grid">
-      <div class="member-card">
+      <a class="member-card" href="https://www.linkedin.com/in/ronaneltherington/" target="_blank" rel="noopener noreferrer" aria-label="Ronan Eltherington on LinkedIn">
         <div class="member-photo">
           <img src="img/people/ronan-eltherington.webp" alt="Ronan Eltherington" />
         </div>
         <div class="member-name">Ronan Eltherington</div>
         <div class="member-role">Graduate Researcher</div>
         <div class="member-bio">Master of Translational Medicine, UC Berkeley &amp; UCSF.</div>
-        <div class="member-links"><a href="https://www.linkedin.com/in/ronaneltherington/" target="_blank" rel="noopener noreferrer" aria-label="Ronan Eltherington on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 21.5h5.16V9.2H2.4zM9.9 9.2h4.95v1.68h.07c.69-1.24 2.37-2.55 4.88-2.55 5.22 0 6.18 3.3 6.18 7.6v5.57h-5.16v-4.94c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.29-1.96 2.62v5.02H9.9z"/></svg></a></div>
-      </div>
-      <div class="member-card">
+      </a>
+      <a class="member-card" href="https://www.linkedin.com/in/arash-mohammady07/" target="_blank" rel="noopener noreferrer" aria-label="Arash Mohammady on LinkedIn">
         <div class="member-photo">
           <img src="img/people/arash-mohammady.webp" alt="Arash Mohammady" />
         </div>
         <div class="member-name">Arash Mohammady</div>
         <div class="member-role">Graduate Researcher</div>
         <div class="member-bio">Master of Translational Medicine, UC Berkeley &amp; UCSF.</div>
-        <div class="member-links"><a href="https://www.linkedin.com/in/arash-mohammady07/" target="_blank" rel="noopener noreferrer" aria-label="Arash Mohammady on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 21.5h5.16V9.2H2.4zM9.9 9.2h4.95v1.68h.07c.69-1.24 2.37-2.55 4.88-2.55 5.22 0 6.18 3.3 6.18 7.6v5.57h-5.16v-4.94c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.29-1.96 2.62v5.02H9.9z"/></svg></a></div>
-      </div>
-      <div class="member-card">
+      </a>
+      <a class="member-card" href="https://www.linkedin.com/in/inbeom-song-5173b2146/" target="_blank" rel="noopener noreferrer" aria-label="Inbeom Song on LinkedIn">
         <div class="member-photo">
           <img src="img/people/inbeom-song.jpg" alt="Inbeom Song" />
         </div>
         <div class="member-name">Inbeom Song</div>
         <div class="member-role">Graduate Researcher</div>
         <div class="member-bio">Master of Translational Medicine, UC Berkeley &amp; UCSF.</div>
-        <div class="member-links"><a href="https://www.linkedin.com/in/inbeom-song-5173b2146/" target="_blank" rel="noopener noreferrer" aria-label="Inbeom Song on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 21.5h5.16V9.2H2.4zM9.9 9.2h4.95v1.68h.07c.69-1.24 2.37-2.55 4.88-2.55 5.22 0 6.18 3.3 6.18 7.6v5.57h-5.16v-4.94c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.29-1.96 2.62v5.02H9.9z"/></svg></a></div>
-      </div>
-      <div class="member-card">
+      </a>
+      <a class="member-card" href="https://www.linkedin.com/in/han-jiun-ke/" target="_blank" rel="noopener noreferrer" aria-label="Han-Jiun Ke on LinkedIn">
         <div class="member-photo">
           <img src="img/people/han-jiun-ke.jpg" alt="Han-Jiun Ke" />
         </div>
         <div class="member-name">Han-Jiun Ke</div>
         <div class="member-role">Graduate Researcher</div>
         <div class="member-bio">Masters of Bioengineering, UC Berkeley.</div>
-        <div class="member-links"><a href="https://www.linkedin.com/in/han-jiun-ke/" target="_blank" rel="noopener noreferrer" aria-label="Han-Jiun Ke on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 21.5h5.16V9.2H2.4zM9.9 9.2h4.95v1.68h.07c.69-1.24 2.37-2.55 4.88-2.55 5.22 0 6.18 3.3 6.18 7.6v5.57h-5.16v-4.94c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.29-1.96 2.62v5.02H9.9z"/></svg></a></div>
-      </div>
+      </a>
       </div>
     </div>
 
