@@ -21,6 +21,10 @@ CNAME               Custom domain for GitHub Pages
 Images are named after the person or organisation they show, lowercase and
 hyphenated, so a card's `src` says who is in it.
 
+Replacing a photo but keeping its filename leaves browsers serving the cached
+old one. Bump the `?v=` on that image's `src` in `index.html` when you swap a
+file in place.
+
 ## Run locally
 
 ```sh
