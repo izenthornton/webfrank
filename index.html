@@ -4,17 +4,17 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>FRANK Autonomous | The first autonomous site survey on the Moon</title>
-<meta name="description" content="The autonomy layer for the planetary economy. The first autonomous site survey on the Moon. Mission 1 landing in 2028." />
+<meta name="description" content="The autonomy layer for the planetary economy. The first autonomous site survey on the Moon. Mission 1 launches late 2028 to an equatorial site; Mission 2 flies the Shackleton rim in 2030." />
 <link rel="icon" type="image/png" href="img/brand/favicon.png" />
 
 <!-- Open Graph / Twitter for link previews -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="FRANK Autonomous | The first autonomous site survey on the Moon" />
-<meta property="og:description" content="The autonomy layer for the planetary economy. Mission 1 landing in 2028." />
+<meta property="og:description" content="The autonomy layer for the planetary economy. Mission 1 launches late 2028." />
 <meta property="og:image" content="https://frankautonomous.com/img/brand/og-card.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="FRANK Autonomous" />
-<meta name="twitter:description" content="The first autonomous site survey on the Moon. Mission 1 landing in 2028." />
+<meta name="twitter:description" content="The first autonomous site survey on the Moon. Mission 1 launches late 2028." />
 <meta name="twitter:image" content="https://frankautonomous.com/img/brand/og-card.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -540,6 +540,114 @@
     transform: translateY(0);
   }
 
+  /* ========== MISSION STATS ========== */
+  .mission-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-bottom: 40px;
+  }
+  .stat {
+    background: var(--orbit-indigo);
+    border-top: 2px solid var(--signal-red);
+    padding: 28px 26px 26px;
+  }
+  .stat .lab {
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--signal-red);
+    margin-bottom: 12px;
+  }
+  .stat .val {
+    font-family: var(--display);
+    font-size: clamp(26px, 3vw, 38px);
+    line-height: 1.05;
+    color: var(--lunar-white);
+    margin-bottom: 12px;
+  }
+  .stat .note {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--starlight);
+  }
+
+  /* Mission profile: label / value rows beneath the stat grid */
+  .profile { border-top: 1px solid var(--line-2); }
+  .profile div {
+    display: grid;
+    grid-template-columns: 210px 1fr;
+    gap: 24px;
+    padding: 16px 2px;
+    border-bottom: 1px solid var(--line);
+  }
+  .profile dt {
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 3px;
+  }
+  .profile dd {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--starlight);
+  }
+  .profile dd strong { color: var(--lunar-white); font-weight: 700; }
+
+  /* ========== TRACTION ========== */
+  .traction-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .trac-card {
+    background: var(--orbit-indigo);
+    padding: 30px 26px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: background 0.2s;
+  }
+  .trac-card:hover { background: var(--indigo-hover); }
+  .trac-card .tag {
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--signal-red);
+  }
+  .trac-card h3 {
+    font-family: var(--display);
+    font-size: 19px;
+    letter-spacing: 0.02em;
+    color: var(--lunar-white);
+  }
+  .trac-card p {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--starlight);
+  }
+
+  /* Maturity / scope notes that sit under a grid */
+  .footnote {
+    margin-top: 32px;
+    max-width: 800px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+  .footnote strong { color: var(--starlight); font-weight: 700; }
+
   /* ========== RESPONSIVE ========== */
   @media (max-width: 900px) {
     .nav-links { display: none; }
@@ -548,6 +656,9 @@
     .hero { padding-top: 110px; }
     .hero-lockup { flex-direction: column; gap: 30px; }
     .solution-grid { grid-template-columns: 1fr; }
+    .mission-grid { grid-template-columns: repeat(2, 1fr); }
+    .traction-grid { grid-template-columns: 1fr; }
+    .profile div { grid-template-columns: 1fr; gap: 6px; }
     .people-grid, .people-grid.three { grid-template-columns: repeat(2, 1fr); }
     section { padding: 78px 0; }
     .footer-grid { flex-direction: column; align-items: flex-start; }
@@ -555,6 +666,12 @@
 
   @media (max-width: 1080px) {
     .partners-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* Six nav links plus the brand lockup need the tracking back under ~1100px. */
+  @media (max-width: 1100px) {
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 12px; letter-spacing: 0.09em; }
   }
 
   /* The contact button carries a 25-character address; at the narrowest
@@ -565,6 +682,7 @@
 
   @media (max-width: 620px) {
     .people-grid, .people-grid.three { grid-template-columns: 1fr; }
+    .mission-grid { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 520px) {
@@ -626,6 +744,8 @@
     </a>
     <div class="nav-links">
       <a href="#what">What we do</a>
+      <a href="#mission">Mission 1</a>
+      <a href="#traction">Traction</a>
       <a href="#team">Team</a>
       <a href="#research">Research</a>
       <a href="#partners">Partners</a>
@@ -641,6 +761,8 @@
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#what" onclick="toggleMenu()">What we do</a>
+    <a href="#mission" onclick="toggleMenu()">Mission 1</a>
+    <a href="#traction" onclick="toggleMenu()">Traction</a>
     <a href="#team" onclick="toggleMenu()">The Team</a>
     <a href="#advisory" onclick="toggleMenu()">Advisory Board</a>
     <a href="#research" onclick="toggleMenu()">Research Group</a>
@@ -658,7 +780,7 @@
         <h1 class="hero-title">FRANK<span class="as">AUTONOMOUS</span></h1>
       </div>
       <p class="hero-sub">
-        The first autonomous site survey on the Moon. Mission 1 landing in 2028.
+        The first autonomous site survey on the Moon. Mission 1 launches late 2028.
       </p>
       <div class="hero-actions">
         <a href="mailto:hello@frankautonomous.com" class="btn btn-primary">
@@ -666,9 +788,10 @@
         </a>
       </div>
       <div class="proof-strip">
-        <span class="proof-chip"><span class="dot"></span>Provisional patent filed</span>
-        <span class="proof-chip"><span class="dot"></span>Two preprints public</span>
         <span class="proof-chip"><span class="dot"></span>Runs onboard on real hardware</span>
+        <span class="proof-chip"><span class="dot"></span>Provisional patent filed</span>
+        <span class="proof-chip"><span class="dot"></span>IROS 2026 workshop paper accepted</span>
+        <span class="proof-chip"><span class="dot"></span>DEMO-1 field campaign, Sept 2026</span>
         <span class="proof-chip hl"><span class="dot"></span>Autonomy built in-house</span>
       </div>
     </div>
@@ -682,9 +805,11 @@
       <h2 class="section-title">What we do</h2>
       <p class="section-subtitle">
         FRANK Autonomous Systems builds the autonomy layer for planetary rovers.
-        Mission 1 lands a 5 kg solar rover on the Shackleton rim in 2028 to survey the
-        region NASA has named for its surface reactor. Sub-meter site data that orbit
-        cannot resolve and teleoperation cannot afford.
+        Mission 1 puts a 5.9 kg solar rover at an equatorial site in 2028 and drives it
+        with no operator in the loop. Mission 2 flies the Shackleton rim in 2030, where
+        the NASA and DOE base architecture places the surface reactor and nobody has
+        surveyed the ground. Site data that orbit cannot resolve and teleoperation
+        cannot afford.
       </p>
     </div>
 
@@ -697,7 +822,7 @@
         </svg>
         <h3>FRANK</h3>
         <div class="expand">Flexible Recurrent Active-memory Neural Kernel</div>
-        <p>Brain-inspired decision engine. 507K parameters, trained with reinforcement learning from scratch. Runs onboard on a Raspberry Pi.</p>
+        <p>Four gated recurrent modules with lateral coupling, a key-value active memory, and a stateless reflex path. ~1M parameters, trained with reinforcement learning from scratch. 50 Hz onboard, 1.96 W measured, on a Raspberry Pi 5.</p>
       </div>
       <!-- SAPPER SWARM -->
       <div class="sol-card">
@@ -711,7 +836,7 @@
           <line x1="8" y1="22" x2="16" y2="22"/>
         </svg>
         <h3>SAPPERS</h3>
-        <p>A 5 kg solar rover, $2.75M delivered to the surface. Small because the autonomy is small.</p>
+        <p>A 5.9 kg solar rover on a 7 kg allocation, $3.85M delivered to the surface. Small because the autonomy is small.</p>
       </div>
       <!-- SUNBEAM -->
       <div class="sol-card">
@@ -725,6 +850,139 @@
         <p>Solar tower base station. Charging, comms, thermal. Enables permanent operations.</p>
       </div>
     </div>
+
+    <p class="footnote reveal">
+      <strong>The result.</strong> Trained on 20 examples, FRANK still applies the rule
+      correctly 100,000 times further out, on 6 of 10 seeds. No baseline configuration
+      generalises on any of 50 (Fisher exact p = 4.2e-6). That is the property a rover
+      needs to keep working for hours with nobody in the loop.
+    </p>
+  </div>
+</section>
+
+<!-- ============== MISSION 1 ============== -->
+<section id="mission">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">Mission 1</h2>
+      <p class="section-subtitle">
+        An equatorial site, late 2028. Three first flights ride on this mission: Instinct
+        Space's lander, our vehicle, our policy. An equatorial site adds no fourth unknown,
+        and continuous Earth line of sight means a failure is observed rather than argued
+        about.
+      </p>
+    </div>
+
+    <div class="mission-grid reveal">
+      <div class="stat">
+        <div class="lab">Vehicle mass</div>
+        <div class="val">5.9 kg</div>
+        <p class="note">Allocated with 30% system margin, against a 7 kg purchased allocation. Design target 5.5 kg.</p>
+      </div>
+      <div class="stat">
+        <div class="lab">Onboard autonomy</div>
+        <div class="val">1.96 W</div>
+        <p class="note">Measured compute draw above board idle. Transformer VLAs need 60-275 W and a dedicated GPU.</p>
+      </div>
+      <div class="stat">
+        <div class="lab">Delivered to the surface</div>
+        <div class="val">$3.85M</div>
+        <p class="note">7 kg at a fixed $550,000 per kilogram. Astrobotic prices CLPS delivery at $1.2M per kilogram.</p>
+      </div>
+      <div class="stat">
+        <div class="lab">Launch</div>
+        <div class="val">Late 2028</div>
+        <p class="note">Target date on the Instinct Space Lunar Vehicle, Slot B. Not contracted until the allocation is executed.</p>
+      </div>
+    </div>
+
+    <dl class="profile reveal">
+      <div>
+        <dt>Site</dt>
+        <dd><strong>Equatorial.</strong> The vehicle is designed rim-capable; the Shackleton rim is the Mission 2 target, 2030.</dd>
+      </div>
+      <div>
+        <dt>Duration</dt>
+        <dd>One lunar day, about 14 Earth days. Lunar night survival is out of scope for Mission 1.</dd>
+      </div>
+      <div>
+        <dt>Deployment</dt>
+        <dd>Unassisted drop from Slot B, roughly 600 mm. The vehicle is powered on before release, so telemetry covers the deployment event.</dd>
+      </div>
+      <div>
+        <dt>Sensing</dt>
+        <dd>3D lidar is the sole navigation and survey sensor; one collection serves both. A secondary camera backs it in a degraded teleoperated mode.</dd>
+      </div>
+      <div>
+        <dt>Data products</dt>
+        <dd>Registered point cloud, digital elevation model, and hazard map, all derived from the same stream. Target ground sample distance 1 cm per pixel.</dd>
+      </div>
+      <div>
+        <dt>Minimum success</dt>
+        <dd>100 m of autonomous traverse, with telemetry and lidar data sufficient to build a map product.</dd>
+      </div>
+      <div>
+        <dt>Full success</dt>
+        <dd><strong>The traverse target completed with zero ground commands</strong>, and the survey product returned at the stated resolution.</dd>
+      </div>
+    </dl>
+
+    <p class="footnote reveal">
+      Figures are current engineering estimates at a pre-PDR maturity: system-level budgets
+      close, subsystem detail is open. Positional accuracy is deliberately not stated until
+      localisation drift is measured over a representative traverse.
+    </p>
+  </div>
+</section>
+
+<!-- ============== TRACTION ============== -->
+<section id="traction">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">Traction</h2>
+      <p class="section-subtitle">
+        Signed and built before the first institutional dollar.
+      </p>
+    </div>
+
+    <div class="traction-grid reveal">
+      <div class="trac-card">
+        <div class="tag">Delivery</div>
+        <h3>Instinct Space</h3>
+        <p>Letter of intent signed, and a payload allocation held on the late-2028 lander. Instinct defers one third of the delivery cost until after successful delivery, so they carry part of the delivery risk alongside us.</p>
+      </div>
+      <div class="trac-card">
+        <div class="tag">Autonomy license</div>
+        <h3>Melange Space Technologies</h3>
+        <p>Letter of interest and mutual cooperation signed August 2026. Evaluating the FRANK autonomy stack for a mission of their own. Non-binding, non-exclusive, no payment obligation.</p>
+      </div>
+      <div class="trac-card">
+        <div class="tag">Field campaign</div>
+        <h3>DEMO-1</h3>
+        <p>Two rovers, one kilometre each, nobody in the loop. Autonomous waypoint traverse at a desert lunar-analog site, one operator, ten-plus miles beyond line of sight over LTE. September 2026.</p>
+      </div>
+      <div class="trac-card">
+        <div class="tag">Intellectual property</div>
+        <h3>Provisional patent</h3>
+        <p>Filed May 2026 on the FRANK architecture.</p>
+      </div>
+      <div class="trac-card">
+        <div class="tag">Publication</div>
+        <h3>Two preprints public</h3>
+        <p>IROS 2026 workshop paper accepted. The extreme length generalisation result is submitted and under review.</p>
+      </div>
+      <div class="trac-card">
+        <div class="tag">Programme</div>
+        <h3>NVIDIA Inception</h3>
+        <p>Member since July 2026.</p>
+      </div>
+    </div>
+
+    <p class="footnote reveal">
+      The instruments above are letters of interest and intent, not contracts or paid
+      deposits, and none of them is presented here as revenue. Mission 1 is a flight
+      qualification of the autonomy stack, not a revenue event.
+    </p>
   </div>
 </section>
 
@@ -753,7 +1011,7 @@
           <img src="img/people/brandon-liwang.jpg" alt="Brandon LiWang" />
         </div>
         <div class="member-name">Brandon LiWang</div>
-        <div class="member-role">Hardware &amp; Test</div>
+        <div class="member-role">Cofounder &middot; Hardware &amp; Test</div>
         <div class="member-bio">
           Owns the runtime, link layer and field test. UC Berkeley MEng; UAVs@Berkeley.
           Hardware Engineer at Sentradel. IEEE-published on autonomous gas source detection.
@@ -765,7 +1023,7 @@
           <img src="img/people/aaron-shey.jpg" alt="Aaron Shey" />
         </div>
         <div class="member-name">Aaron Shey</div>
-        <div class="member-role">Software &amp; ML</div>
+        <div class="member-role">Cofounder &middot; Software &amp; ML</div>
         <div class="member-bio">
           Owns the policy and the simulator. UC Berkeley Cognitive Science.
           Research apprentice at Berkeley's DNA Sequencing Facility (URAP):
@@ -818,7 +1076,7 @@
         <div class="member-name">Michael Thornton</div>
         <div class="member-role">Software Architecture Advisor</div>
         <div class="member-bio">
-          DevOps Architect at Zscaler. Software architect at Bluebeam,
+          Software Architect at Zscaler. Software architect at Bluebeam,
           Recharge Payments, and Pulse Secure, where he architected a Zero Trust
           microservice platform. 25 years of distributed systems and platform design.
           Writes Dev Details.
@@ -849,7 +1107,8 @@
     <div class="reveal">
       <h2 class="section-title">FRANK Research Group</h2>
       <p class="section-subtitle">
-        Student researchers working alongside the core team on machine learning, architecture, and autonomy.
+        Six graduate researchers and six undergraduates at UC Berkeley and Embry-Riddle,
+        working alongside the core team on machine learning, architecture, and autonomy.
       </p>
     </div>
 
@@ -1029,6 +1288,8 @@
       </div>
       <div class="footer-links">
         <a href="#what">What we do</a>
+        <a href="#mission">Mission 1</a>
+        <a href="#traction">Traction</a>
         <a href="#team">Team</a>
         <a href="#research">Research</a>
         <a href="#partners">Partners</a>

@@ -8,8 +8,8 @@ and scripts are inline; the only external dependency is Google Fonts.
 ## Layout
 
 ```
-index.html          Main site (nav, hero, what we do, team, advisory board,
-                    research group, partners, contact)
+index.html          Main site (nav, hero, what we do, Mission 1, traction,
+                    team, advisory board, research group, partners, contact)
 sarplan/index.html  SARPlan demo, served at /sarplan
 img/brand/          Logo, favicon, OG card, starfield background
 img/people/         Team, advisory board and research group headshots
