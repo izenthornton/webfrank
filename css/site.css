@@ -1,0 +1,595 @@
+  :root {
+    /* Brand kit - June 2026 */
+    --deep-space:   #0D1137;   /* Deep Space - backgrounds */
+    --orbit-indigo: #1A2350;   /* Orbit Indigo - cards, panels */
+    --indigo-hover: #232D5F;   /* hover state, derived */
+    --space-deep:   #080B26;   /* darkest, derived */
+
+    --signal-red:   #E63946;   /* Signal Red - Command, default accent */
+    --red-deep:     #C42F3B;
+
+    --lunar-white:  #FFFFFF;   /* Lunar White - titles, FRANK */
+    --starlight:    #C8CBE8;   /* Starlight - body text on dark */
+    --slate:        #B0B8C8;   /* Slate - secondary text */
+    --muted:        #8892A8;   /* Muted - captions */
+
+    --line:        rgba(255,255,255,0.07);
+    --line-2:      rgba(255,255,255,0.14);
+
+    --display: 'Russo One', sans-serif;
+    --body:    'Inter', sans-serif;
+
+    --max: 1240px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--deep-space);
+    color: var(--lunar-white);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.45;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* Deep Space starfield (fixed pseudo-element - mobile-safe) */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: url('/img/brand/bg-starfield.png') center / cover no-repeat var(--deep-space);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+  /* ========== NAV ========== */
+  nav.top {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(13,17,55,0.88);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 12px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--display);
+    font-size: 19px;
+    letter-spacing: 0.02em;
+  }
+  .nav-brand img { height: 40px; width: auto; }
+  .nav-brand .as { color: var(--signal-red); }
+
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--starlight);
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--signal-red); }
+  .nav-links a.active { color: var(--lunar-white); }
+
+  .nav-cta {
+    padding: 10px 18px;
+    background: var(--signal-red);
+    color: var(--lunar-white);
+    font-family: var(--display);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .nav-cta:hover { background: var(--red-deep); }
+
+  .menu-toggle { display: none; background: none; border: none; color: var(--lunar-white); cursor: pointer; }
+
+  /* ========== HERO ========== */
+  .hero {
+    min-height: calc(100vh - 64px);
+    padding: 110px 0 90px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .hero-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 36px;
+    width: 100%;
+  }
+
+  /* Stacked lockup: flight mark left, FRANK / AUTONOMOUS right */
+  .hero-lockup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(26px, 4vw, 48px);
+  }
+  .hero-lockup img {
+    width: clamp(150px, 21vw, 235px);
+    height: auto;
+  }
+  h1.hero-title {
+    font-family: var(--display);
+    font-size: clamp(56px, 9vw, 118px);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    text-align: left;
+    margin-bottom: 0;
+  }
+  h1.hero-title .as {
+    display: block;
+    color: var(--signal-red);
+    font-size: 0.475em;
+    letter-spacing: 0.06em;
+    line-height: 1.15;
+  }
+
+  .hero-sub {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--starlight);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.35;
+  }
+  .hero-sub strong { color: var(--lunar-white); font-weight: 700; }
+
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+
+  /* Proof-of-work chip strip beneath hero copy */
+  .proof-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .proof-chip {
+    font-family: var(--body);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--starlight);
+    padding: 7px 12px;
+    border: 1px solid var(--line-2);
+    background: rgba(255,255,255,0.02);
+  }
+  .proof-chip .dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--signal-red);
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .proof-break { flex-basis: 100%; height: 0; }
+  .proof-chip.hl {
+    border-color: rgba(230,57,70,0.5);
+    color: var(--lunar-white);
+  }
+
+  .btn {
+    padding: 15px 26px;
+    font-family: var(--display);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-primary { background: var(--signal-red); color: var(--lunar-white); }
+  .btn-primary:hover { background: var(--red-deep); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--lunar-white);
+    border: 1px solid var(--line-2);
+  }
+  .btn-ghost:hover { border-color: var(--signal-red); color: var(--signal-red); }
+  .btn .arr { transition: transform 0.15s; }
+  .btn:hover .arr { transform: translateX(4px); }
+
+  /* ========== SECTIONS ========== */
+  section { padding: 110px 0; position: relative; }
+  section.page { padding-top: 152px; }
+
+  h2.section-title {
+    font-family: var(--display);
+    font-size: clamp(40px, 6vw, 76px);
+    line-height: 1.0;
+    letter-spacing: -0.005em;
+    color: var(--signal-red);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    max-width: 900px;
+  }
+  h2.section-title.white { color: var(--lunar-white); }
+  h2.section-title.white .accent { color: var(--signal-red); }
+  h2.section-title .accent { color: var(--lunar-white); }
+
+  .section-subtitle {
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--starlight);
+    margin-bottom: 56px;
+    max-width: 720px;
+  }
+
+  /* ========== SOLUTION CARDS ========== */
+  .solution-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .sol-card {
+    background: var(--orbit-indigo);
+    padding: 44px 32px 38px;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .sol-card:hover { background: var(--indigo-hover); }
+  .sol-card .icon {
+    width: 64px; height: 64px;
+    margin: 4px auto 24px;
+    color: var(--lunar-white);
+  }
+  .sol-card h3 {
+    font-family: var(--display);
+    font-size: 22px;
+    color: var(--signal-red);
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+  .sol-card .expand {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: -10px 0 14px;
+  }
+  .sol-card p {
+    color: var(--starlight);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  /* ========== PEOPLE ========== */
+  /* Every person - team, advisory board, research group - gets the same box:
+     one four-column grid, so cards match in width across sections and in
+     height across a row. */
+  .people-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+  /* The Team is three people; three across fills the row instead of
+     leaving a fourth column empty. */
+  .people-grid.three { grid-template-columns: repeat(3, 1fr); }
+  /* The Team is the section investors look at first, and its cards are wider
+     than the four-across ones, so the avatars scale up to match. */
+  .people-grid.three .member-photo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 22px;
+  }
+  .member-card {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 26px 28px;
+    background: var(--orbit-indigo);
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .member-card:hover { background: var(--indigo-hover); }
+  .member-photo {
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    background: var(--space-deep);
+    border: 1px solid var(--line-2);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px;
+    color: var(--muted);
+    font-family: var(--body);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    overflow: hidden;
+  }
+  .member-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .member-name {
+    font-family: var(--display);
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+  .member-role {
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--signal-red);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .member-bio {
+    color: var(--starlight);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.55;
+  }
+
+  .member-card:focus-visible {
+    outline: 2px solid var(--signal-red);
+    outline-offset: 3px;
+  }
+
+  /* ========== SUBSECTIONS (Research Group tiers) ========== */
+  .subsection + .subsection { margin-top: 58px; }
+  .subsection-title {
+    font-family: var(--display);
+    font-size: 22px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lunar-white);
+    margin: 0 0 22px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line-2);
+  }
+
+  /* Placeholder (unfilled) slots */
+  .member-card.open {
+    background: transparent;
+    border: 1px dashed var(--line-2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .member-card.open:hover {
+    background: rgba(255,255,255,0.02);
+    border-color: rgba(230,57,70,0.45);
+  }
+  .member-card.open .member-photo {
+    background: transparent;
+    border-style: dashed;
+    color: var(--muted);
+    font-family: var(--display);
+    font-size: 18px;
+    letter-spacing: 0.08em;
+  }
+  .member-card.open .member-name {
+    color: var(--slate);
+    font-size: 17px;
+  }
+  .member-card.open .member-role { color: var(--muted); margin-bottom: 0; }
+
+  /* ========== PARTNERS ========== */
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .partner-card {
+    background: var(--orbit-indigo);
+    border: 1px solid var(--line);
+    min-height: 132px;
+    padding: 26px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    text-align: center;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .partner-card.no-logo { justify-content: center; }
+  /* Supplied logos are dark-on-white or full-bleed colour, so they sit on a
+     light plate rather than straight on the Deep Space panel. */
+  .partner-logo {
+    width: 100%;
+    height: 104px;
+    background: var(--lunar-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 22px;
+  }
+  .partner-logo img { max-height: 100%; max-width: 100%; width: auto; object-fit: contain; }
+  .partner-card:hover {
+    background: var(--indigo-hover);
+    border-color: rgba(230,57,70,0.4);
+  }
+  .partner-card:focus-visible {
+    outline: 2px solid var(--signal-red);
+    outline-offset: 3px;
+  }
+  .partner-name {
+    font-family: var(--display);
+    font-size: clamp(16px, 1.5vw, 19px);
+    line-height: 1.22;
+    letter-spacing: 0.02em;
+  }
+
+  /* ========== CTA / CONTACT ========== */
+  .cta-section {
+    padding: 130px 0 110px;
+    border-top: 1px solid var(--line);
+  }
+  .cta-head { text-align: left; max-width: 920px; }
+  .cta-section h2 {
+    font-family: var(--display);
+    font-size: clamp(40px, 6vw, 76px);
+    line-height: 1.0;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    color: var(--signal-red);
+  }
+  .cta-section h2 .accent { color: var(--lunar-white); }
+  .cta-section .cta-sub {
+    font-family: var(--display);
+    font-size: 22px;
+    color: var(--lunar-white);
+    margin-bottom: 8px;
+  }
+  .cta-section .cta-sub .accent { color: var(--signal-red); }
+  .cta-section .cta-vision {
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--starlight);
+    line-height: 1.5;
+    max-width: 720px;
+    margin-top: 18px;
+  }
+  .ask-cta { margin-top: 42px; }
+
+  /* ========== FOOTER ========== */
+  footer {
+    padding: 42px 0 28px;
+    border-top: 1px solid var(--line);
+  }
+  .footer-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 22px;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--display);
+    font-size: 15px;
+  }
+  .footer-brand img { height: 30px; width: auto; }
+  .footer-brand .as { color: var(--signal-red); }
+  .footer-meta {
+    font-family: var(--body);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 12px 22px; }
+  .footer-links a {
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--slate);
+    transition: color 0.15s;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .footer-links a:hover { color: var(--signal-red); }
+
+  /* ========== SCROLL REVEAL ========== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .menu-toggle { display: block; }
+    .nav-cta { display: none; }
+    .hero { padding-top: 110px; }
+    .hero-lockup { flex-direction: column; gap: 30px; }
+    .solution-grid { grid-template-columns: 1fr; }
+    .people-grid, .people-grid.three { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 78px 0; }
+    .footer-grid { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 1080px) {
+    .partners-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* The contact button carries a 25-character address; at the narrowest
+     phone widths it needs to give back some padding and tracking. */
+  @media (max-width: 400px) {
+    .btn { padding: 14px 18px; font-size: 11px; letter-spacing: 0.1em; }
+  }
+
+  @media (max-width: 620px) {
+    .people-grid, .people-grid.three { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 520px) {
+    .partners-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 64px; left: 0; right: 0;
+    background: rgba(13,17,55,0.97);
+    border-bottom: 1px solid var(--line);
+    padding: 22px 28px;
+    z-index: 99;
+  }
+  .mobile-menu.open { display: flex; flex-direction: column; gap: 16px; }
+  .mobile-menu a {
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    color: var(--starlight);
+    text-transform: uppercase;
+  }
+  .mobile-menu a.active { color: var(--signal-red); }
+
+  /* Copy-to-clipboard toast (email fallback) */
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 32px;
+    transform: translateX(-50%) translateY(16px);
+    background: var(--orbit-indigo);
+    border: 1px solid var(--signal-red);
+    color: var(--lunar-white);
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 13px 20px;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }

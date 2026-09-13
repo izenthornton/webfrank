@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>FRANK Autonomous | The first autonomous site survey on the Moon</title>
-<meta name="description" content="The autonomy layer for the planetary economy. The first autonomous site survey on the Moon. Mission 1 launches late 2028." />
+<title>Partners | FRANK Autonomous</title>
+<meta name="description" content="Programs and institutions supporting FRANK Autonomous Systems." />
 <link rel="icon" type="image/png" href="/img/brand/favicon.png" />
-<link rel="canonical" href="https://frankautonomous.com/" />
+<link rel="canonical" href="https://frankautonomous.com/partners/" />
 
 <!-- Open Graph / Twitter for link previews -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://frankautonomous.com/" />
-<meta property="og:title" content="FRANK Autonomous | The first autonomous site survey on the Moon" />
-<meta property="og:description" content="The autonomy layer for the planetary economy. The first autonomous site survey on the Moon. Mission 1 launches late 2028." />
+<meta property="og:url" content="https://frankautonomous.com/partners/" />
+<meta property="og:title" content="Partners | FRANK Autonomous" />
+<meta property="og:description" content="Programs and institutions supporting FRANK Autonomous Systems." />
 <meta property="og:image" content="https://frankautonomous.com/img/brand/og-card.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="FRANK Autonomous | The first autonomous site survey on the Moon" />
-<meta name="twitter:description" content="The autonomy layer for the planetary economy. The first autonomous site survey on the Moon. Mission 1 launches late 2028." />
+<meta name="twitter:title" content="Partners | FRANK Autonomous" />
+<meta name="twitter:description" content="Programs and institutions supporting FRANK Autonomous Systems." />
 <meta name="twitter:image" content="https://frankautonomous.com/img/brand/og-card.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,7 +37,7 @@
       <a href="/what/">What we do</a>
       <a href="/team/">Team</a>
       <a href="/research/">Research</a>
-      <a href="/partners/">Partners</a>
+      <a href="/partners/" class="active">Partners</a>
     </div>
     <a href="mailto:hello@frankautonomous.com" class="nav-cta">Email us</a>
     <button class="menu-toggle" aria-label="Menu" onclick="toggleMenu()">
@@ -52,32 +52,45 @@
     <a href="/what/" onclick="toggleMenu()">What we do</a>
     <a href="/team/" onclick="toggleMenu()">Team</a>
     <a href="/research/" onclick="toggleMenu()">Research</a>
-    <a href="/partners/" onclick="toggleMenu()">Partners</a>
+    <a href="/partners/" class="active" onclick="toggleMenu()">Partners</a>
     <a href="mailto:hello@frankautonomous.com" onclick="toggleMenu()">Email us</a>
   </div>
 </nav>
 
-<section class="hero" id="top">
+<section id="partners" class="page">
   <div class="container">
-    <div class="hero-grid">
-      <div class="hero-lockup">
-        <img src="/img/brand/flight-mark.png" alt="FRANK Autonomous flight mark" />
-        <h1 class="hero-title">FRANK<span class="as">AUTONOMOUS</span></h1>
-      </div>
-      <p class="hero-sub">
-        The first autonomous site survey on the Moon. Mission 1 launches late 2028.
+    <div class="reveal">
+      <h2 class="section-title">Partners</h2>
+      <p class="section-subtitle">
+        Programs and institutions supporting FRANK Autonomous Systems.
       </p>
-      <div class="hero-actions">
-        <a href="mailto:hello@frankautonomous.com" class="btn btn-primary">
-          Email us <span class="arr">→</span>
-        </a>
-      </div>
-      <div class="proof-strip">
-        <span class="proof-chip"><span class="dot"></span>Runs onboard at ~4 W</span>
-        <span class="proof-chip"><span class="dot"></span>Provisional patent filed</span>
-        <span class="proof-chip"><span class="dot"></span>IROS 2026 workshop paper accepted</span>
-        <span class="proof-chip hl"><span class="dot"></span>Autonomy built in-house</span>
-      </div>
+    </div>
+
+    <div class="partners-grid reveal">
+      <a class="partner-card" href="https://deeptech.berkeley.edu/" target="_blank" rel="noopener noreferrer">
+        <div class="partner-logo">
+          <img src="/img/partners/berkeley-deep-tech.png" alt="UC Berkeley Deep Tech Innovation Lab" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
+        </div>
+        <div class="partner-name">UC Berkeley Deep Tech<br />Innovation Lab</div>
+      </a>
+      <a class="partner-card" href="https://www.joinef.com/" target="_blank" rel="noopener noreferrer">
+        <div class="partner-logo">
+          <img src="/img/partners/entrepreneurs-first.png" alt="Entrepreneurs First" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
+        </div>
+        <div class="partner-name">Entrepreneurs First</div>
+      </a>
+      <a class="partner-card" href="https://fictionlab.pl/" target="_blank" rel="noopener noreferrer">
+        <div class="partner-logo">
+          <img src="/img/partners/fictionlab.png" alt="FictionLab" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
+        </div>
+        <div class="partner-name">FictionLab</div>
+      </a>
+      <a class="partner-card" href="https://www.nvidia.com/en-us/startups/" target="_blank" rel="noopener noreferrer">
+        <div class="partner-logo">
+          <img src="/img/partners/nvidia-inception.png" alt="NVIDIA Inception Program" onerror="this.closest('.partner-card').classList.add('no-logo'); this.closest('.partner-logo').remove();" />
+        </div>
+        <div class="partner-name">NVIDIA Inception</div>
+      </a>
     </div>
   </div>
 </section>
