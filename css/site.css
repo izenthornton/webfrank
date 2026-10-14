@@ -241,9 +241,10 @@
   }
 
   /* ========== SOLUTION CARDS ========== */
+  /* One card (FRANK), held to the subtitle's width above it. */
   .solution-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: minmax(0, 720px);
     gap: 22px;
   }
   .sol-card {
