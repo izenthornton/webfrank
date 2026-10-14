@@ -281,6 +281,45 @@
     line-height: 1.5;
   }
 
+  /* ========== DEMO-1 ========== */
+  /* Field results under the FRANK card, in the same 720px column. */
+  .demo { max-width: 720px; margin-top: 58px; }
+  .demo-lede {
+    font-family: var(--display);
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.25;
+    color: var(--lunar-white);
+    margin-bottom: 10px;
+  }
+  .demo-when {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--slate);
+    margin-bottom: 26px;
+  }
+  .demo-facts { border-top: 1px solid var(--line-2); }
+  .demo-facts div {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    padding: 16px 2px;
+    border-bottom: 1px solid var(--line);
+  }
+  .demo-facts dt {
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 3px;
+  }
+  .demo-facts dd {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--starlight);
+  }
+
   /* ========== PEOPLE ========== */
   /* Every person - team, advisory board, research group - gets the same box:
      one four-column grid, so cards match in width across sections and in
@@ -545,6 +584,7 @@
 
   @media (max-width: 620px) {
     .people-grid, .people-grid.three { grid-template-columns: 1fr; }
+    .demo-facts div { grid-template-columns: 1fr; gap: 6px; }
   }
 
   @media (max-width: 520px) {

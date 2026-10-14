@@ -10,7 +10,7 @@ section; partners and contact live on the home page. Every page pulls the same
 
 ```
 index.html           Home: hero, partners, contact
-what/index.html      What we do, served at /what
+what/index.html      What we do and DEMO-1, served at /what
 team/index.html      The team and the advisory board, at /team
 research/index.html  FRANK Research Group, at /research
 sarplan/index.html   SARPlan demo, at /sarplan (self-contained, predates the split)
