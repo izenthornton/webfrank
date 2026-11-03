@@ -59,15 +59,18 @@ frank.space      A      185.199.111.153
 www.frank.space  CNAME  izenthornton.github.io
 ```
 
-Leave these records DNS only (grey cloud) until GitHub has issued the
-certificate and "Enforce HTTPS" can be ticked in the repo's Pages settings.
-Proxying them later needs Cloudflare SSL/TLS set to Full (strict); Flexible
-loops forever against Enforce HTTPS.
+All five are proxied (orange cloud), so visitors get Cloudflare's certificate
+and GitHub never issues its own; "Enforce HTTPS" in the repo's Pages settings
+stays unavailable and that is expected. Cloudflare handles HTTPS instead:
+SSL/TLS mode is Full and Always Use HTTPS is on. Keep the mode at Full;
+Flexible can loop, and Full (strict) rejects GitHub's certificate. The MX and
+TXT records beside them are Google Workspace mail for frank.space; leave them
+alone.
 
 `frankautonomous.com` is the old domain. GitHub Pages answers one custom domain
-per repo, so the old one lands on a GitHub 404 unless Cloudflare redirects it
-first. That takes a Single Redirect rule on the old zone, with its records
-proxied (orange cloud):
+per repo, so the old one lands on a GitHub 404 unless something redirects it
+first. Its DNS is not in the FRANK Cloudflare account. Moved there, it takes a
+Single Redirect rule with its records proxied (orange cloud):
 
 ```
 When:    http.host in {"frankautonomous.com" "www.frankautonomous.com"}
