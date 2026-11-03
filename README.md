@@ -1,6 +1,6 @@
 # webfrank
 
-Marketing site for [FRANK Autonomous Systems Inc.](https://frankautonomous.com)
+Marketing site for [FRANK Autonomous Systems Inc.](https://frank.space)
 
 Static HTML/CSS, no build step. One page per nav tab, each showing a single
 section; partners and contact live on the home page. Every page pulls the same
@@ -48,8 +48,32 @@ python3 -m http.server 5173
 
 ## Deploy
 
-Static — drop the repo contents on any host (GitHub Pages, Cloudflare Pages,
-Netlify, etc.).
+GitHub Pages builds `main` and serves it at the domain in `CNAME`
+(`frank.space`). DNS for the domain lives in Cloudflare:
+
+```
+frank.space      A      185.199.108.153
+frank.space      A      185.199.109.153
+frank.space      A      185.199.110.153
+frank.space      A      185.199.111.153
+www.frank.space  CNAME  izenthornton.github.io
+```
+
+Leave these records DNS only (grey cloud) until GitHub has issued the
+certificate and "Enforce HTTPS" can be ticked in the repo's Pages settings.
+Proxying them later needs Cloudflare SSL/TLS set to Full (strict); Flexible
+loops forever against Enforce HTTPS.
+
+`frankautonomous.com` is the old domain. GitHub Pages answers one custom domain
+per repo, so the old one lands on a GitHub 404 unless Cloudflare redirects it
+first. That takes a Single Redirect rule on the old zone, with its records
+proxied (orange cloud):
+
+```
+When:    http.host in {"frankautonomous.com" "www.frankautonomous.com"}
+Then:    301 to concat("https://frank.space", http.request.uri.path)
+         preserve query string
+```
 
 ## Contact
 
