@@ -68,9 +68,10 @@ TXT records beside them are Google Workspace mail for frank.space; leave them
 alone.
 
 `frankautonomous.com` is the old domain. GitHub Pages answers one custom domain
-per repo, so the old one lands on a GitHub 404 unless something redirects it
-first. Its DNS is not in the FRANK Cloudflare account. Moved there, it takes a
-Single Redirect rule with its records proxied (orange cloud):
+per repo, so Cloudflare redirects the old one before it reaches GitHub. Its zone
+in the FRANK Cloudflare account carries proxied (orange cloud) A and `www`
+records, its Google Workspace mail records (MX, SPF, DKIM, DMARC; DNS only),
+and this Single Redirect rule:
 
 ```
 When:    http.host in {"frankautonomous.com" "www.frankautonomous.com"}
