@@ -292,6 +292,9 @@
   /* The Team is three people; three across fills the row instead of
      leaving a fourth column empty. */
   .people-grid.three { grid-template-columns: repeat(3, 1fr); }
+  /* The Advisory Board is three people as well; three across, but at the
+     standard avatar size so the founders stay the larger cards. */
+  .people-grid.trio { grid-template-columns: repeat(3, 1fr); }
   /* The Team is the section investors look at first, and its cards are wider
      than the four-across ones, so the avatars scale up to match. */
   .people-grid.three .member-photo {
@@ -527,7 +530,7 @@
     .hero { padding-top: 110px; }
     .hero-lockup { flex-direction: column; gap: 30px; }
     .solution-grid { grid-template-columns: 1fr; }
-    .people-grid, .people-grid.three { grid-template-columns: repeat(2, 1fr); }
+    .people-grid, .people-grid.three, .people-grid.trio { grid-template-columns: repeat(2, 1fr); }
     section { padding: 78px 0; }
     .footer-grid { flex-direction: column; align-items: flex-start; }
   }
@@ -543,7 +546,7 @@
   }
 
   @media (max-width: 620px) {
-    .people-grid, .people-grid.three { grid-template-columns: 1fr; }
+    .people-grid, .people-grid.three, .people-grid.trio { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 520px) {
