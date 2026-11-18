@@ -16,7 +16,7 @@ footer.
 
 ```
 index.html           Home: hero, partners, contact
-what/index.html      What we do, served at /what
+what/index.html      What we do, served at /what: problem, product, DEMO-1, plan
 team/index.html      The team and the advisory board, at /team
 research/index.html  FRANK Research Group, at /research
 sarplan/index.html   SARPlan demo, at /sarplan (self-contained, predates the split)
@@ -25,6 +25,7 @@ js/site.js           Menu toggle, scroll reveal, mailto clipboard fallback
 img/brand/           Logo, favicon, OG card, star tile, mesh scenes
 img/people/          Team, advisory board and research group headshots
 img/partners/        Partner logos
+img/what/            Field photos and diagrams on the What we do page
 tools/               render_scenes.py, which draws the mesh scenes
 CNAME                Custom domain for GitHub Pages
 .nojekyll            Serve files as-is, no Jekyll processing
@@ -62,6 +63,9 @@ Seeds and waypoints are fixed, so a re-run reproduces the same landscape. The
 hero's flag is an HTML element pinned to the end of the route; the script prints
 that pin's position, and if the hero route changes those two percentages go into
 `.flag` in `css/site.css`. `og-card.jpg` is a 1200 x 630 capture of the hero.
+
+The What we do page follows the pitch deck slide for slide; its figures and
+field photos in `img/what/` are the deck's own images, exported as WebP.
 
 ## Run locally
 
