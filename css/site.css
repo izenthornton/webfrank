@@ -1,25 +1,28 @@
   :root {
     /* Brand kit - June 2026 */
     --deep-space:   #0D1137;   /* Deep Space - backgrounds */
-    --orbit-indigo: #1A2350;   /* Orbit Indigo - cards, panels */
-    --indigo-hover: #232D5F;   /* hover state, derived */
-    --space-deep:   #080B26;   /* darkest, derived */
+    --orbit-indigo: #1A2350;   /* Orbit Indigo - hover, horizon glow */
+    --panel:        #14174A;   /* panel fill, from the deck's tables */
+    --panel-line:   #252E68;   /* panel border */
+    --rule:         #4A5088;   /* the thin rule under a title block */
 
-    --signal-red:   #E63946;   /* Signal Red - Command, default accent */
+    --signal-red:   #E63946;   /* Signal Red - the only accent */
     --red-deep:     #C42F3B;
 
     --lunar-white:  #FFFFFF;   /* Lunar White - titles, FRANK */
     --starlight:    #C8CBE8;   /* Starlight - body text on dark */
-    --slate:        #B0B8C8;   /* Slate - secondary text */
-    --muted:        #8892A8;   /* Muted - captions */
-
-    --line:        rgba(255,255,255,0.07);
-    --line-2:      rgba(255,255,255,0.14);
+    --slate:        #A9AFD0;   /* secondary text */
+    --muted:        #8892A8;   /* captions */
 
     --display: 'Russo One', sans-serif;
     --body:    'Inter', sans-serif;
 
     --max: 1240px;
+    --gutter: 28px;
+
+    /* The mesh scenes never draw narrower than this, so the dots stay
+       readable on a phone; below it the scene is cropped, not shrunk. */
+    --scene-min: 1000px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,35 +32,35 @@
     color: var(--lunar-white);
     font-family: var(--body);
     font-weight: 400;
-    line-height: 1.45;
+    line-height: 1.5;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; display: block; }
 
-  /* Deep Space starfield (fixed pseudo-element - mobile-safe) */
+  /* Deep Space with a star tile (fixed pseudo-element - mobile-safe) */
   body::before {
     content: '';
     position: fixed; inset: 0;
-    background: url('/img/brand/bg-starfield.png') center / cover no-repeat var(--deep-space);
+    background: url('/img/brand/stars.png') 0 0 / 1200px 1200px repeat var(--deep-space);
     pointer-events: none;
     z-index: 0;
   }
 
-  .container { max-width: var(--max); margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); position: relative; z-index: 1; }
 
   /* ========== NAV ========== */
   nav.top {
     position: fixed; top: 0; left: 0; right: 0;
     z-index: 100;
-    background: rgba(13,17,55,0.88);
-    border-bottom: 1px solid var(--line);
+    background: rgba(13,17,55,0.9);
+    border-bottom: 1px solid var(--panel-line);
   }
   .nav-inner {
     max-width: var(--max);
     margin: 0 auto;
-    padding: 12px 28px;
+    padding: 12px var(--gutter);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -65,17 +68,16 @@
   .nav-brand {
     display: flex; align-items: center; gap: 12px;
     font-family: var(--display);
-    font-size: 19px;
-    letter-spacing: 0.02em;
+    font-size: 18px;
+    letter-spacing: 0.04em;
   }
   .nav-brand img { height: 40px; width: auto; }
   .nav-brand .as { color: var(--signal-red); }
 
-  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links { display: flex; gap: 34px; align-items: center; }
   .nav-links a {
-    font-family: var(--body);
-    font-size: 13px;
-    font-weight: 700;
+    font-family: var(--display);
+    font-size: 12px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--starlight);
@@ -101,96 +103,91 @@
   .menu-toggle { display: none; background: none; border: none; color: var(--lunar-white); cursor: pointer; }
 
   /* ========== HERO ========== */
+  /* The deck's title slide: the wordmark over the lunar mesh, a rover setting
+     out along a red route. The bottom padding keeps the type clear of the
+     ground, whatever the viewport. */
   .hero {
-    min-height: calc(100vh - 64px);
-    padding: 110px 0 90px;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 112px 0 calc(0.25 * max(100%, var(--scene-min)));
     position: relative;
     display: flex;
     align-items: center;
+    overflow: hidden;
   }
-  .hero-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 36px;
-    width: 100%;
+  .hero > .container { width: 100%; }
+
+  /* scene-hero.webp is 2400 x 900. When the viewport is narrower than
+     --scene-min the scene slides left so the pin and its flag stay in view. */
+  .hero-scene {
+    position: absolute;
+    bottom: 0;
+    left: min(0px, calc(100% - 0.96 * max(100%, var(--scene-min))));
+    width: max(100%, var(--scene-min));
+    aspect-ratio: 2400 / 900;
+    background: url('/img/brand/scene-hero.webp') center / 100% 100% no-repeat;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 24%, #000 88%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0, #000 24%, #000 88%, transparent 100%);
+    pointer-events: none;
+  }
+  /* The flag flies from the top of the pin at the route's end. These two
+     percentages are the "pin top" that tools/render_scenes.py prints. */
+  .flag {
+    position: absolute;
+    left: 71.64%;
+    bottom: calc(100% - 46.66%);
+    padding: 7px 12px 6px;
+    background: var(--signal-red);
+    color: var(--lunar-white);
+    font-family: var(--display);
+    font-size: clamp(10px, 0.85vw, 13px);
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 
-  /* Stacked lockup: flight mark left, FRANK / AUTONOMOUS right */
-  .hero-lockup {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(26px, 4vw, 48px);
-  }
-  .hero-lockup img {
-    width: clamp(150px, 21vw, 235px);
-    height: auto;
-  }
+  .hero-block { width: fit-content; max-width: 100%; }
+
+  /* FRANK is 3.461em wide in Russo One; the size below fits it to the
+     container on a phone and stops growing at 270px. */
   h1.hero-title {
     font-family: var(--display);
-    font-size: clamp(56px, 9vw, 118px);
-    line-height: 0.95;
-    letter-spacing: 0.01em;
-    text-align: left;
-    margin-bottom: 0;
+    font-weight: 400;
+    font-size: clamp(64px, calc((100vw - 2 * var(--gutter) - 4px) / 3.5), 270px);
+    line-height: 0.8;
+    letter-spacing: 0;
+    margin-left: -0.06em;    /* pulls the F's side bearing onto the margin */
   }
+  /* AUTONOMOUS is tracked out to the width of FRANK, as on the deck: at
+     0.233 of the size it needs 0.81em between letters to span the same measure. */
   h1.hero-title .as {
     display: block;
     color: var(--signal-red);
-    font-size: 0.475em;
-    letter-spacing: 0.06em;
-    line-height: 1.15;
+    font-size: 0.233em;
+    line-height: 1;
+    letter-spacing: 0.81em;
+    margin: 0.52em -0.81em 0 0.2575em;
+    white-space: nowrap;
   }
 
   .hero-sub {
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--starlight);
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.35;
-  }
-  .hero-sub strong { color: var(--lunar-white); font-weight: 700; }
-
-  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
-
-  /* Proof-of-work chip strip beneath hero copy */
-  .proof-strip {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    max-width: 720px;
-    margin: 0 auto;
-  }
-  .proof-chip {
-    font-family: var(--body);
-    font-size: 11px;
-    letter-spacing: 0.14em;
+    font-family: var(--display);
+    font-size: clamp(13px, 1.45vw, 19px);
+    letter-spacing: 0.1em;
+    line-height: 1.45;
     text-transform: uppercase;
-    color: var(--starlight);
-    padding: 7px 12px;
-    border: 1px solid var(--line-2);
-    background: rgba(255,255,255,0.02);
-  }
-  .proof-chip .dot {
-    display: inline-block;
-    width: 6px; height: 6px;
-    background: var(--signal-red);
-    border-radius: 50%;
-    margin-right: 8px;
-    vertical-align: middle;
-  }
-  .proof-break { flex-basis: 100%; height: 0; }
-  .proof-chip.hl {
-    border-color: rgba(230,57,70,0.5);
     color: var(--lunar-white);
+    margin-top: clamp(18px, 2.2vw, 30px);
+    padding-top: clamp(14px, 1.6vw, 22px);
+    border-top: 1px solid var(--rule);
   }
+  .hero-sub strong { font-weight: 400; }
+
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: clamp(22px, 2.6vw, 36px); }
 
   .btn {
-    padding: 15px 26px;
+    padding: 15px 24px 14px;
     font-family: var(--display);
     font-size: 13px;
     letter-spacing: 0.14em;
@@ -207,37 +204,52 @@
   .btn-ghost {
     background: transparent;
     color: var(--lunar-white);
-    border: 1px solid var(--line-2);
+    border: 1px solid var(--rule);
   }
   .btn-ghost:hover { border-color: var(--signal-red); color: var(--signal-red); }
   .btn .arr { transition: transform 0.15s; }
   .btn:hover .arr { transform: translateX(4px); }
 
   /* ========== SECTIONS ========== */
-  section { padding: 110px 0; position: relative; }
-  section.page { padding-top: 152px; }
+  section { padding: 96px 0; position: relative; }
+  section.page { padding-top: 148px; }
 
+  /* Titles are Lunar White; red is kept for labels, figures and the flag. */
   h2.section-title {
     font-family: var(--display);
-    font-size: clamp(40px, 6vw, 76px);
-    line-height: 1.0;
-    letter-spacing: -0.005em;
-    color: var(--signal-red);
+    font-weight: 400;
+    font-size: clamp(30px, 4.4vw, 54px);
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    color: var(--lunar-white);
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 18px;
     max-width: 900px;
   }
-  h2.section-title.white { color: var(--lunar-white); }
-  h2.section-title.white .accent { color: var(--signal-red); }
-  h2.section-title .accent { color: var(--lunar-white); }
+  h2.section-title .accent { color: var(--signal-red); }
+  /* A title with no subtitle still needs air before the grid. */
+  h2.section-title:last-child { margin-bottom: 40px; }
 
   .section-subtitle {
     font-family: var(--body);
-    font-weight: 600;
-    font-size: 17px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.6;
     color: var(--starlight);
-    margin-bottom: 56px;
+    margin-bottom: 52px;
     max-width: 720px;
+  }
+
+  /* ========== PANELS ========== */
+  /* One panel treatment for every card on the site. */
+  .sol-card, .member-card, .partner-card {
+    background: rgba(20,23,74,0.78);
+    border: 1px solid var(--panel-line);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .sol-card:hover, .member-card:hover, .partner-card:hover {
+    background: var(--orbit-indigo);
+    border-color: var(--rule);
   }
 
   /* ========== SOLUTION CARDS ========== */
@@ -246,38 +258,33 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 22px;
   }
-  .sol-card {
-    background: var(--orbit-indigo);
-    padding: 44px 32px 38px;
-    text-align: center;
-    transition: background 0.2s;
-  }
-  .sol-card:hover { background: var(--indigo-hover); }
+  .sol-card { padding: 34px 30px 34px; }
   .sol-card .icon {
-    width: 64px; height: 64px;
-    margin: 4px auto 24px;
+    width: 44px; height: 44px;
+    margin: 0 0 26px;
     color: var(--lunar-white);
   }
   .sol-card h3 {
     font-family: var(--display);
+    font-weight: 400;
     font-size: 22px;
     color: var(--signal-red);
     letter-spacing: 0.05em;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
   .sol-card .expand {
-    font-size: 11px;
-    font-weight: 500;
+    font-family: var(--display);
+    font-size: 10px;
     letter-spacing: 0.12em;
+    line-height: 1.5;
     text-transform: uppercase;
-    color: var(--muted);
-    margin: -10px 0 14px;
+    color: var(--slate);
+    margin: -8px 0 14px;
   }
   .sol-card p {
     color: var(--starlight);
     font-size: 15px;
-    font-weight: 600;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   /* ========== PEOPLE ========== */
@@ -306,21 +313,18 @@
     display: flex;
     flex-direction: column;
     padding: 32px 26px 28px;
-    background: var(--orbit-indigo);
     text-align: center;
-    transition: background 0.2s;
   }
-  .member-card:hover { background: var(--indigo-hover); }
   .member-photo {
     width: 104px;
     height: 104px;
     border-radius: 50%;
-    background: var(--space-deep);
-    border: 1px solid var(--line-2);
+    background: var(--deep-space);
+    border: 1px solid var(--rule);
     display: flex; align-items: center; justify-content: center;
     margin: 0 auto 18px;
     color: var(--muted);
-    font-family: var(--body);
+    font-family: var(--display);
     font-size: 11px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -329,23 +333,24 @@
   .member-photo img { width: 100%; height: 100%; object-fit: cover; }
   .member-name {
     font-family: var(--display);
-    font-size: 20px;
-    margin-bottom: 4px;
+    font-size: 17px;
+    letter-spacing: 0.04em;
+    line-height: 1.25;
+    text-transform: uppercase;
+    margin-bottom: 6px;
   }
   .member-role {
     font-family: var(--body);
-    font-weight: 700;
-    font-size: 11px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.4;
     color: var(--signal-red);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
     margin-bottom: 14px;
   }
   .member-bio {
     color: var(--starlight);
     font-size: 13px;
-    font-weight: 500;
-    line-height: 1.55;
+    line-height: 1.6;
   }
 
   .member-card:focus-visible {
@@ -354,42 +359,40 @@
   }
 
   /* ========== SUBSECTIONS (Research Group tiers) ========== */
+  /* A red Russo label over a rule, as the deck labels its rows. */
   .subsection + .subsection { margin-top: 58px; }
   .subsection-title {
     font-family: var(--display);
-    font-size: 22px;
-    letter-spacing: 0.1em;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--lunar-white);
+    color: var(--signal-red);
     margin: 0 0 22px;
     padding-bottom: 12px;
-    border-bottom: 1px solid var(--line-2);
+    border-bottom: 1px solid var(--rule);
   }
 
   /* Placeholder (unfilled) slots */
   .member-card.open {
     background: transparent;
-    border: 1px dashed var(--line-2);
+    border: 1px dashed var(--rule);
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
   .member-card.open:hover {
-    background: rgba(255,255,255,0.02);
-    border-color: rgba(230,57,70,0.45);
+    background: rgba(20,23,74,0.5);
+    border-color: var(--signal-red);
   }
   .member-card.open .member-photo {
     background: transparent;
     border-style: dashed;
     color: var(--muted);
-    font-family: var(--display);
     font-size: 18px;
     letter-spacing: 0.08em;
   }
-  .member-card.open .member-name {
-    color: var(--slate);
-    font-size: 17px;
-  }
+  .member-card.open .member-name { color: var(--slate); }
   .member-card.open .member-role { color: var(--muted); margin-bottom: 0; }
 
   /* ========== PARTNERS ========== */
@@ -399,17 +402,14 @@
     gap: 18px;
   }
   .partner-card {
-    background: var(--orbit-indigo);
-    border: 1px solid var(--line);
     min-height: 132px;
-    padding: 26px 22px;
+    padding: 22px 22px 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 16px;
+    gap: 18px;
     text-align: center;
-    transition: background 0.2s, border-color 0.2s;
   }
   .partner-card.no-logo { justify-content: center; }
   /* Supplied logos are dark-on-white or full-bleed colour, so they sit on a
@@ -424,59 +424,85 @@
     padding: 16px 22px;
   }
   .partner-logo img { max-height: 100%; max-width: 100%; width: auto; object-fit: contain; }
-  .partner-card:hover {
-    background: var(--indigo-hover);
-    border-color: rgba(230,57,70,0.4);
-  }
   .partner-card:focus-visible {
     outline: 2px solid var(--signal-red);
     outline-offset: 3px;
   }
   .partner-name {
     font-family: var(--display);
-    font-size: clamp(16px, 1.5vw, 19px);
-    line-height: 1.22;
-    letter-spacing: 0.02em;
+    font-size: 13px;
+    line-height: 1.45;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--starlight);
   }
 
   /* ========== CTA / CONTACT ========== */
+  /* The deck's closing slide: three lines, white, Starlight, red. */
   .cta-section {
-    padding: 130px 0 110px;
-    border-top: 1px solid var(--line);
+    padding: 96px 0 40px;
+    border-top: 1px solid var(--panel-line);
   }
   .cta-head { text-align: left; max-width: 920px; }
   .cta-section h2 {
     font-family: var(--display);
-    font-size: clamp(40px, 6vw, 76px);
-    line-height: 1.0;
-    margin-bottom: 14px;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0.14em;
+    line-height: 1.2;
+    margin-bottom: 26px;
     text-transform: uppercase;
     color: var(--signal-red);
   }
-  .cta-section h2 .accent { color: var(--lunar-white); }
   .cta-section .cta-sub {
     font-family: var(--display);
-    font-size: 22px;
+    font-size: clamp(26px, 3.6vw, 44px);
+    line-height: 1.15;
     color: var(--lunar-white);
-    margin-bottom: 8px;
+    margin-bottom: 26px;
   }
-  .cta-section .cta-sub .accent { color: var(--signal-red); }
   .cta-section .cta-vision {
-    font-family: var(--body);
-    font-weight: 600;
-    font-size: 17px;
+    font-family: var(--display);
+    font-size: clamp(17px, 2vw, 24px);
+    line-height: 1.35;
     color: var(--starlight);
-    line-height: 1.5;
-    max-width: 720px;
-    margin-top: 18px;
   }
-  .ask-cta { margin-top: 42px; }
+  .cta-section .cta-vision .accent {
+    display: block;
+    margin-top: 10px;
+    color: var(--signal-red);
+  }
+  .ask-cta { margin-top: 40px; }
 
   /* ========== FOOTER ========== */
+  /* Every page ends on the ground: scene-ground.webp (2400 x 760) sits behind
+     the footer, the rover parked at its flag. The ground fades to Deep Space
+     under the footer row; --footer-lift raises the scene where that row
+     stacks and needs more room. When cropped, the flag stays in view. */
   footer {
-    padding: 42px 0 28px;
-    border-top: 1px solid var(--line);
+    --footer-lift: 0px;
+    position: relative;
+    min-height: calc(0.3167 * max(100vw, var(--scene-min)) + var(--footer-lift));
+    padding: 80px 0 26px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
   }
+  footer::before {
+    content: '';
+    position: absolute;
+    bottom: var(--footer-lift);
+    left: min(0px, calc(76% - 0.698 * max(100%, var(--scene-min))));
+    width: max(100%, var(--scene-min));
+    aspect-ratio: 2400 / 760;
+    background:
+      linear-gradient(to top, var(--deep-space) 0, rgba(13,17,55,0.9) 13%, rgba(13,17,55,0) 34%),
+      url('/img/brand/scene-ground.webp') center / 100% 100% no-repeat;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 24%);
+            mask-image: linear-gradient(to bottom, transparent 0, #000 24%);
+    pointer-events: none;
+  }
+  footer > .container { width: 100%; }
   .footer-grid {
     display: flex;
     justify-content: space-between;
@@ -489,25 +515,25 @@
     align-items: center;
     gap: 12px;
     font-family: var(--display);
-    font-size: 15px;
+    font-size: 14px;
+    letter-spacing: 0.06em;
   }
   .footer-brand img { height: 30px; width: auto; }
   .footer-brand .as { color: var(--signal-red); }
   .footer-meta {
-    font-family: var(--body);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-  }
-  .footer-links { display: flex; flex-wrap: wrap; gap: 12px 22px; }
-  .footer-links a {
-    font-family: var(--body);
-    font-weight: 700;
-    font-size: 12px;
+    font-family: var(--display);
+    font-size: 10px;
     color: var(--slate);
+    letter-spacing: 0.14em;
+  }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+  .footer-links a {
+    font-family: var(--display);
+    font-size: 11px;
+    color: var(--starlight);
     transition: color 0.15s;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
   }
   .footer-links a:hover { color: var(--signal-red); }
 
@@ -524,15 +550,17 @@
 
   /* ========== RESPONSIVE ========== */
   @media (max-width: 900px) {
+    :root { --gutter: 22px; }
     .nav-links { display: none; }
     .menu-toggle { display: block; }
     .nav-cta { display: none; }
-    .hero { padding-top: 110px; }
-    .hero-lockup { flex-direction: column; gap: 30px; }
     .solution-grid { grid-template-columns: 1fr; }
     .people-grid, .people-grid.three, .people-grid.trio { grid-template-columns: repeat(2, 1fr); }
-    section { padding: 78px 0; }
-    .footer-grid { flex-direction: column; align-items: flex-start; }
+    section { padding: 72px 0; }
+    section.page { padding-top: 124px; }
+    .cta-section { padding: 72px 0 32px; }
+    footer { --footer-lift: 88px; }
+    .footer-grid { flex-direction: column; align-items: flex-start; gap: 18px; }
   }
 
   @media (max-width: 1080px) {
@@ -558,16 +586,15 @@
     display: none;
     position: fixed; top: 64px; left: 0; right: 0;
     background: rgba(13,17,55,0.97);
-    border-bottom: 1px solid var(--line);
-    padding: 22px 28px;
+    border-bottom: 1px solid var(--panel-line);
+    padding: 22px var(--gutter);
     z-index: 99;
   }
-  .mobile-menu.open { display: flex; flex-direction: column; gap: 16px; }
+  .mobile-menu.open { display: flex; flex-direction: column; gap: 18px; }
   .mobile-menu a {
-    font-family: var(--body);
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.12em;
+    font-family: var(--display);
+    font-size: 13px;
+    letter-spacing: 0.14em;
     color: var(--starlight);
     text-transform: uppercase;
   }
@@ -579,11 +606,11 @@
     left: 50%;
     bottom: 32px;
     transform: translateX(-50%) translateY(16px);
-    background: var(--orbit-indigo);
+    background: var(--panel);
     border: 1px solid var(--signal-red);
     color: var(--lunar-white);
     font-family: var(--body);
-    font-weight: 600;
+    font-weight: 500;
     font-size: 14px;
     padding: 13px 20px;
     z-index: 200;
@@ -595,4 +622,9 @@
   .toast.show {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
   }
