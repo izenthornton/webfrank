@@ -211,7 +211,7 @@
   .btn:hover .arr { transform: translateX(4px); }
 
   /* ========== SECTIONS ========== */
-  section { padding: 72px 0; position: relative; }
+  section { padding: 96px 0; position: relative; }
   section.page { padding-top: 148px; }
 
   /* Titles are Lunar White; red is kept for labels, figures and the flag. */
@@ -240,235 +240,56 @@
     max-width: 720px;
   }
 
-  /* ========== WHAT WE DO ========== */
-  /* The deck's content slides, one per section: a statement, big red figures,
-     red Russo labels over plain text, and a source line. */
-
-  /* A red line under a title, where the deck dates or qualifies it. */
-  .section-kicker {
-    font-size: 17px;
-    line-height: 1.5;
-    color: var(--signal-red);
-    margin: -6px 0 22px;
-    max-width: 720px;
-  }
-  .lead {
-    font-size: clamp(19px, 2vw, 24px);
-    line-height: 1.4;
-    color: var(--lunar-white);
-    margin-bottom: 44px;
-  }
-
-  /* Three lines, the last in red (the deck's opening statement). */
-  .statement { margin: 26px 0 30px; max-width: 820px; }
-  .statement p {
-    font-size: clamp(20px, 2.3vw, 28px);
-    line-height: 1.35;
-    color: var(--lunar-white);
-  }
-  .statement p + p { margin-top: 0.7em; }
-  .statement .accent, .callout .accent { color: var(--signal-red); }
-
-  .label {
-    font-family: var(--display);
-    font-size: 13px;
-    letter-spacing: 0.12em;
-    line-height: 1.4;
-    text-transform: uppercase;
-    color: var(--signal-red);
-    margin-bottom: 8px;
-  }
-  .source {
-    font-size: 12px;
-    line-height: 1.5;
-    color: var(--muted);
-    margin-top: 34px;
-  }
-
-  .stat-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 36px 48px;
-  }
-  .stat .num, .spec .num {
-    font-family: var(--display);
-    color: var(--signal-red);
-    line-height: 1;
-    white-space: nowrap;
-  }
-  .stat .num { font-size: clamp(44px, 5.4vw, 68px); margin-bottom: 18px; }
-  .stat p {
-    font-size: 17px;
-    line-height: 1.55;
-    color: var(--starlight);
-    max-width: 330px;
-  }
-
-  .callout {
-    margin-top: 52px;
-    padding-top: 26px;
-    border-top: 1px solid var(--rule);
-  }
-  .callout p { font-size: clamp(18px, 1.9vw, 22px); line-height: 1.45; color: var(--lunar-white); }
-
-  /* Today against FRANK, side by side. */
-  .compare {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px 48px;
-    margin-top: 6px;
-  }
-  .tag {
-    display: inline-block;
-    padding: 8px 14px 7px;
-    border: 1px solid var(--rule);
-    background: rgba(11,14,54,0.8);
-    color: var(--starlight);
-    font-family: var(--display);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    line-height: 1.3;
-    text-transform: uppercase;
-  }
-  .tag.red { background: var(--signal-red); border-color: var(--signal-red); color: var(--lunar-white); }
-
-  /* The deck's drawing, with its labels set in type over it. */
-  .diagram { position: relative; margin: 14px 0 20px; }
-  .diagram img { width: 100%; height: auto; }
-  .diagram span {
-    position: absolute;
-    font-size: clamp(10px, 1vw, 13px);
-    line-height: 1;
-    color: var(--starlight);
-    white-space: nowrap;
-  }
-  .diagram span.c { transform: translateX(-50%); }
-  .diagram span.hl { color: var(--lunar-white); }
-  .diagram span.c, .diagram span[style*="right:4%"] {
-    font-family: var(--display);
-    font-size: clamp(9px, 0.8vw, 11px);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .rows > div {
-    display: grid;
-    grid-template-columns: 170px 1fr;
-    gap: 6px 18px;
-    padding: 13px 0;
-    border-top: 1px solid var(--panel-line);
-  }
-  .rows dt {
-    font-family: var(--display);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    line-height: 1.6;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .rows dd { font-size: 16px; line-height: 1.5; color: var(--starlight); }
-  .compare-col.frank .rows dt { color: var(--signal-red); }
-  .compare-col.frank .rows dd { color: var(--lunar-white); }
-
-  /* Picture beside text. .flip puts the picture on the right. */
-  .split {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 40px 56px;
-    align-items: center;
-  }
-  .split + .split { margin-top: 72px; }
-  .split.flip .shot { order: 2; }
-  .shot img { width: 100%; height: auto; border: 1px solid var(--panel-line); }
-  .shot figcaption {
-    font-family: var(--display);
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--slate);
-    margin-top: 12px;
-  }
-
-  .spec-list { display: grid; gap: 22px; margin-bottom: 30px; }
-  .spec {
-    display: grid;
-    grid-template-columns: minmax(150px, 0.8fr) 1fr;
-    gap: 6px 22px;
-    align-items: center;
-  }
-  .spec .num { font-size: clamp(30px, 3.2vw, 40px); }
-  .spec p { font-size: 15px; line-height: 1.5; color: var(--starlight); }
-  p.body { font-size: 17px; line-height: 1.6; color: var(--starlight); }
-
-  .blocks { display: grid; gap: 30px; }
-  .blocks.three { grid-template-columns: repeat(3, 1fr); gap: 34px 48px; }
-  .block p { font-size: 16px; line-height: 1.6; color: var(--starlight); }
-  .block .expand {
-    font-family: var(--display);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    line-height: 1.5;
-    text-transform: uppercase;
-    color: var(--slate);
-    margin: -2px 0 10px;
-  }
-
-  /* Milestones along a rule; the first and the goal carry red date tags. */
-  .timeline {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    border-top: 1px solid var(--rule);
-    margin: 22px 0 60px;
-  }
-  .timeline li {
-    position: relative;
-    padding: 22px 14px 0 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  .timeline li::before {
-    content: '';
-    position: absolute;
-    top: -4px; left: 0;
-    width: 7px; height: 7px;
-    background: var(--starlight);
-  }
-  .timeline li.mark::before { background: var(--signal-red); }
-  .timeline .date {
-    padding: 6px 9px 5px;
-    border: 1px solid var(--rule);
-    font-family: var(--display);
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    line-height: 1;
-    text-transform: uppercase;
-    color: var(--starlight);
-    white-space: nowrap;
-  }
-  .timeline .mark .date { background: var(--signal-red); border-color: var(--signal-red); color: var(--lunar-white); }
-  .timeline .what { font-size: 15px; line-height: 1.4; color: var(--lunar-white); }
-  .timeline .trl {
-    font-family: var(--display);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    line-height: 1.4;
-    text-transform: uppercase;
-    color: var(--slate);
-  }
-
   /* ========== PANELS ========== */
   /* One panel treatment for every card on the site. */
-  .member-card, .partner-card {
+  .sol-card, .member-card, .partner-card {
     background: rgba(20,23,74,0.78);
     border: 1px solid var(--panel-line);
     transition: background 0.2s, border-color 0.2s;
   }
-  .member-card:hover, .partner-card:hover {
+  .sol-card:hover, .member-card:hover, .partner-card:hover {
     background: var(--orbit-indigo);
     border-color: var(--rule);
+  }
+
+  /* ========== SOLUTION CARDS ========== */
+  .solution-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .sol-card { padding: 34px 30px 34px; }
+  /* The picture runs edge to edge across the top of the card. */
+  .sol-card .shot {
+    width: calc(100% + 60px);
+    height: auto;
+    max-width: none;
+    margin: -34px -30px 28px;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-bottom: 1px solid var(--panel-line);
+  }
+  .sol-card h3 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--signal-red);
+    letter-spacing: 0.05em;
+    margin-bottom: 14px;
+  }
+  .sol-card .expand {
+    font-family: var(--display);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin: -8px 0 14px;
+  }
+  .sol-card p {
+    color: var(--starlight);
+    font-size: 15px;
+    line-height: 1.6;
   }
 
   /* ========== PEOPLE ========== */
@@ -738,13 +559,9 @@
     .nav-links { display: none; }
     .menu-toggle { display: block; }
     .nav-cta { display: none; }
-    .stat-grid, .compare, .split, .blocks.three { grid-template-columns: 1fr; }
-    .split.flip .shot { order: 0; }
-    .split + .split { margin-top: 56px; }
-    .timeline { grid-template-columns: repeat(3, 1fr); row-gap: 34px; border-top: none; }
-    .timeline li { border-top: 1px solid var(--rule); }
+    .solution-grid { grid-template-columns: 1fr; }
     .people-grid, .people-grid.three, .people-grid.trio { grid-template-columns: repeat(2, 1fr); }
-    section { padding: 56px 0; }
+    section { padding: 72px 0; }
     section.page { padding-top: 124px; }
     .cta-section { padding: 72px 0 32px; }
     footer { --footer-lift: 88px; }
@@ -767,8 +584,6 @@
 
   @media (max-width: 520px) {
     .partners-grid { grid-template-columns: 1fr; }
-    .timeline { grid-template-columns: repeat(2, 1fr); }
-    .rows > div, .spec { grid-template-columns: 1fr; }
   }
 
   /* Mobile menu */

@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>What we do | FRANK Autonomous</title>
-<meta name="description" content="Learned onboard autonomy for small lunar rovers. The operator sends one command per traverse and the rover drives the rest: 1,827 m autonomous in the field, two surveys without GPS." />
+<meta name="description" content="A rover on the Moon is driven by a team on Earth, a few metres at a time. We build the autonomy that takes the team out of the loop." />
 <link rel="icon" type="image/png" href="/img/brand/favicon.png" />
 <link rel="canonical" href="https://frank.space/what/" />
 
@@ -12,17 +12,17 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://frank.space/what/" />
 <meta property="og:title" content="What we do | FRANK Autonomous" />
-<meta property="og:description" content="Learned onboard autonomy for small lunar rovers. The operator sends one command per traverse and the rover drives the rest: 1,827 m autonomous in the field, two surveys without GPS." />
+<meta property="og:description" content="A rover on the Moon is driven by a team on Earth, a few metres at a time. We build the autonomy that takes the team out of the loop." />
 <meta property="og:image" content="https://frank.space/img/brand/og-card.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="What we do | FRANK Autonomous" />
-<meta name="twitter:description" content="Learned onboard autonomy for small lunar rovers. The operator sends one command per traverse and the rover drives the rest: 1,827 m autonomous in the field, two surveys without GPS." />
+<meta name="twitter:description" content="A rover on the Moon is driven by a team on Earth, a few metres at a time. We build the autonomy that takes the team out of the loop." />
 <meta name="twitter:image" content="https://frank.space/img/brand/og-card.jpg" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/css/site.css?v=3" />
+<link rel="stylesheet" href="/css/site.css?v=4" />
 </head>
 <body>
 
@@ -59,204 +59,31 @@
   <div class="container">
     <div class="reveal">
       <h2 class="section-title">What we do</h2>
-      <div class="statement">
-        <p>NASA's VIPER rover is driven from a control room at Ames, 4.5 metres at a time.</p>
-        <p>That works for one rover. It does not work for ten.</p>
-        <p class="accent">Operations scale with the team.</p>
-      </div>
       <p class="section-subtitle">
-        FRANK is learned onboard autonomy for small lunar rovers. The operator sends
-        one command per traverse and the rover drives the rest.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section id="problem">
-  <div class="container">
-    <div class="reveal">
-      <h2 class="section-title">The surface does not scale</h2>
-      <p class="section-subtitle">
-        Every rover flown so far has been a one-off, with a control room to match.
+        A rover on the Moon is driven by a team on Earth, a few metres at a time.
+        That works for one rover. It does not work for ten. We build the autonomy
+        that takes the team out of the loop: one command at the start, then the
+        rover drives itself. Mission 1 launches in late 2028 to drive 1 km with
+        zero ground commands.
       </p>
     </div>
 
-    <div class="stat-grid reveal">
-      <div class="stat">
-        <div class="num">#2</div>
-        <p>of 32 in NASA's FY26 civil space shortfall ranking: SF16, surface mobility and logistics for crew and assets</p>
+    <div class="solution-grid reveal">
+      <div class="sol-card">
+        <img class="shot" src="/img/what/field-rover.webp" width="1200" height="1009" alt="The FRANK test rover on loose sand." />
+        <h3>FRANK</h3>
+        <div class="expand">Flexible Recurrent Active-memory Neural Kernel</div>
+        <p>A learned policy of about 1M parameters. Perception, localisation, hazard detection and planning on a Raspberry Pi 5, on 58 mW.</p>
       </div>
-      <div class="stat">
-        <div class="num">$62M</div>
-        <p>a year for NASA to run the Mars rover Curiosity with people in the loop</p>
+      <div class="sol-card">
+        <img class="shot" src="/img/what/demo-1-survey-track.webp" width="1200" height="805" alt="Aerial view of a survey field with the rover's survey track drawn in red." />
+        <h3>DEMO-1</h3>
+        <p>Twelve field runs in October 2026. 1,827 m autonomous, with two complete surveys without GPS, both at night.</p>
       </div>
-      <div class="stat">
-        <div class="num">29</div>
-        <p>rover programmes on the lunar manifest this decade, 10 of them commercial</p>
-      </div>
-    </div>
-
-    <div class="callout reveal">
-      <div class="label">The improvement needed</div>
-      <p>A kilometre at 4.5 m per command is about 220 ground commands.</p>
-      <p class="accent">The target is one.</p>
-    </div>
-    <p class="source reveal">NASA FY26 Civil Space Shortfall Ranking &middot; Moon Monday #256 &middot; NASA Science, VIPER lunar operations</p>
-  </div>
-</section>
-
-<section id="operations">
-  <div class="container">
-    <div class="reveal">
-      <h2 class="section-title">One operator, many rovers</h2>
-    </div>
-
-    <div class="compare reveal">
-      <div class="compare-col">
-        <div class="tag">Today: one control room per rover</div>
-        <div class="diagram">
-          <img src="/img/what/one-control-room-per-rover.webp" width="845" height="518" alt="A drive team on Earth exchanging commands and images with a single rover on the Moon." />
-          <span style="left:16%; top:40%" class="c">Earth</span>
-          <span style="right:54%; top:50%">commands</span>
-          <span style="left:57%; top:50%">images</span>
-          <span style="right:4%; top:51%">Moon</span>
-        </div>
-        <dl class="rows">
-          <div><dt>Operators</dt><dd>A drive team for each rover</dd></div>
-          <div><dt>Ground commands</dt><dd>One every 4.5 m</dd></div>
-          <div><dt>Bandwidth</dt><dd>Images to the ground before every move</dd></div>
-        </dl>
-      </div>
-      <div class="compare-col frank">
-        <div class="tag red">With FRANK: one operator for the fleet</div>
-        <div class="diagram">
-          <img src="/img/what/one-operator-for-the-fleet.webp" width="844" height="518" alt="One operator on Earth sending a single command to five rovers on the Moon, each driving its own route." />
-          <span style="left:16%; top:40%" class="c">Earth</span>
-          <span style="left:48%; top:35%" class="hl">one command</span>
-          <span style="right:4%; top:51%">Moon</span>
-        </div>
-        <dl class="rows">
-          <div><dt>Operators</dt><dd>One operator for the fleet</dd></div>
-          <div><dt>Ground commands</dt><dd>One per traverse</dd></div>
-          <div><dt>Bandwidth</dt><dd>One command up. No link needed to drive.</dd></div>
-        </dl>
-      </div>
-    </div>
-    <p class="source reveal">Operational view (OV-1) &middot; Today: NASA VIPER drive operations</p>
-  </div>
-</section>
-
-<section id="frank">
-  <div class="container">
-    <div class="reveal">
-      <h2 class="section-title">Rovers that scale without a team</h2>
-    </div>
-
-    <div class="split reveal">
-      <figure class="shot">
-        <img src="/img/what/field-rover.webp" width="1200" height="1009" alt="The FRANK test rover on loose sand: four wheels, a sensor dome and an antenna mast." />
-      </figure>
-      <div>
-        <div class="spec-list">
-          <div class="spec"><div class="num">~1M</div><p>parameters</p></div>
-          <div class="spec"><div class="num">27&ndash;36 ms</div><p>per policy step on a Raspberry Pi 5, measured in the field</p></div>
-          <div class="spec"><div class="num">58 mW</div><p>the policy's share of a 1.90 W board</p></div>
-        </div>
-        <p class="body">
-          A learned policy drives the rover from on board. One command at the start,
-          then nothing. A deterministic safety layer can stop it; it fired once in the
-          field and the rover stopped.
-        </p>
-      </div>
-    </div>
-
-    <div class="split flip reveal">
-      <figure class="shot">
-        <img src="/img/what/field-rover-slope.webp" width="1200" height="800" alt="The test rover driving across a sandy slope." />
-      </figure>
-      <div class="blocks">
-        <div class="block">
-          <div class="label">FRANK</div>
-          <p class="expand">Flexible Recurrent Active-memory Neural Kernel</p>
-          <p>Reinforcement learning from scratch, no pre-training. Sim-trained policy, real hardware, no teleoperation. Provisional patent filed.</p>
-        </div>
-        <div class="block">
-          <div class="label">The policy</div>
-          <p>FRANK does perception, localisation, hazard detection and planning. On a Raspberry Pi 5.</p>
-        </div>
-        <div class="block">
-          <div class="label">The safety layer</div>
-          <p>A deterministic proximity veto and a sensor-loss watchdog. They can stop FRANK; FRANK cannot stop them.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="demo-1">
-  <div class="container">
-    <div class="reveal">
-      <h2 class="section-title">DEMO-1</h2>
-      <p class="section-kicker">4&ndash;7 October 2026. Twelve runs: open ground, dry river wash, survey field.</p>
-      <p class="lead">1,827 m autonomous. Two complete surveys without GPS.</p>
-    </div>
-
-    <div class="split reveal">
-      <figure class="shot">
-        <img src="/img/what/demo-1-survey-track.webp" width="1200" height="805" alt="Aerial view of the survey field with a red back-and-forth survey track and a 10 m scale bar." />
-        <figcaption>Survey field, DEMO-1</figcaption>
-      </figure>
-      <div class="blocks">
-        <div class="block">
-          <div class="label">No GPS</div>
-          <p>13 of 13 waypoints and return, home within 1.49 m. Twice, both at night.</p>
-        </div>
-        <div class="block">
-          <div class="label">River wash, 966 m route</div>
-          <p>464 m, 4 of 7 waypoints, 58 obstacle stops, operator stop.</p>
-        </div>
-        <div class="block">
-          <div class="label">12 runs</div>
-          <p>6 complete, 5 partial, 1 failed. Causes traced; fixes built or identified.</p>
-        </div>
-        <div class="block">
-          <div class="label">One command</div>
-          <p>Survey points are set once by the operator. The model drives every metre between them.</p>
-        </div>
-      </div>
-    </div>
-    <p class="source reveal">Technical report, 13 October 2026</p>
-  </div>
-</section>
-
-<section id="plan">
-  <div class="container">
-    <div class="reveal">
-      <h2 class="section-title">TRL 5 today. Commercial launch 2028.</h2>
-      <p class="section-kicker">Next milestone: TRL 6 at PDR, May 2027.</p>
-    </div>
-
-    <ol class="timeline reveal">
-      <li class="mark"><span class="date">Oct 2026</span><span class="what">DEMO-1 field campaign</span><span class="trl">TRL 5</span></li>
-      <li><span class="date">Dec 2026</span><span class="what">Engineering rover</span></li>
-      <li><span class="date">May 2027</span><span class="what">PDR</span><span class="trl">TRL 6</span></li>
-      <li><span class="date">Nov 2027</span><span class="what">Protoflight qualification</span></li>
-      <li><span class="date">Jun 2028</span><span class="what">Delivered to lander</span><span class="trl">TRL 8</span></li>
-      <li class="mark"><span class="date">Late 2028</span><span class="what">Commercial launch</span><span class="trl">TRL 9 on the surface</span></li>
-    </ol>
-
-    <div class="blocks three reveal">
-      <div class="block">
-        <div class="label">TRL 6 pass criteria</div>
-        <p>1 km in regolith simulant under lunar lighting with zero ground commands. The safety layer stops every injected fault.</p>
-      </div>
-      <div class="block">
-        <div class="label">Mission 1 &middot; Launch late 2028 &middot; Equatorial</div>
-        <p>1 km autonomous, zero ground commands. A flight qualification.</p>
-      </div>
-      <div class="block">
-        <div class="label">Every site after</div>
-        <p>Rim-capable by design. Polar first, 2030; that is where the missions are.</p>
+      <div class="sol-card">
+        <img class="shot" src="/img/what/one-operator-for-the-fleet.webp" width="844" height="518" alt="One operator on Earth sending a single command to five rovers on the Moon." />
+        <h3>ONE OPERATOR</h3>
+        <p>One command per traverse. The rover does not need the link to drive, so one operator can hold a fleet.</p>
       </div>
     </div>
   </div>
