@@ -242,55 +242,82 @@
 
   /* ========== PANELS ========== */
   /* One panel treatment for every card on the site. */
-  .sol-card, .member-card, .partner-card {
+  .member-card, .partner-card {
     background: rgba(20,23,74,0.78);
     border: 1px solid var(--panel-line);
     transition: background 0.2s, border-color 0.2s;
   }
-  .sol-card:hover, .member-card:hover, .partner-card:hover {
+  .member-card:hover, .partner-card:hover {
     background: var(--orbit-indigo);
     border-color: var(--rule);
   }
 
-  /* ========== SOLUTION CARDS ========== */
-  .solution-grid {
+  /* ========== WHAT WE DO ========== */
+  /* Mostly pictures: the deck's one-operator drawing, then two photographs. */
+
+  /* Today against FRANK, side by side, each under its tag. */
+  .compare {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 48px;
   }
-  .sol-card { padding: 34px 30px 34px; }
-  /* The picture runs edge to edge across the top of the card. */
-  .sol-card .shot {
-    width: calc(100% + 60px);
+  .tag {
+    display: inline-block;
+    padding: 8px 14px 7px;
+    border: 1px solid var(--rule);
+    background: rgba(11,14,54,0.8);
+    color: var(--starlight);
+    font-family: var(--display);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+  .tag.red { background: var(--signal-red); border-color: var(--signal-red); color: var(--lunar-white); }
+
+  /* The drawing's labels are set in type over it, placed by percentage. */
+  .diagram { position: relative; margin-top: 14px; }
+  .diagram img { width: 100%; height: auto; }
+  .diagram span {
+    position: absolute;
+    font-size: clamp(10px, 1vw, 13px);
+    line-height: 1;
+    color: var(--starlight);
+    white-space: nowrap;
+  }
+  .diagram .hl { color: var(--lunar-white); }
+  .diagram .place {
+    font-family: var(--display);
+    font-size: clamp(9px, 0.8vw, 11px);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+  }
+  .diagram .place.end { transform: none; }
+
+  /* Two photographs, each with a red title and one line. */
+  .shots {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 48px;
+    margin-top: 64px;
+  }
+  .shot img {
+    width: 100%;
     height: auto;
-    max-width: none;
-    margin: -34px -30px 28px;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 4 / 3;
     object-fit: cover;
-    border-bottom: 1px solid var(--panel-line);
+    border: 1px solid var(--panel-line);
   }
-  .sol-card h3 {
+  .shot h3 {
     font-family: var(--display);
     font-weight: 400;
     font-size: 22px;
-    color: var(--signal-red);
     letter-spacing: 0.05em;
-    margin-bottom: 14px;
+    color: var(--signal-red);
+    margin: 22px 0 8px;
   }
-  .sol-card .expand {
-    font-family: var(--display);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    line-height: 1.5;
-    text-transform: uppercase;
-    color: var(--slate);
-    margin: -8px 0 14px;
-  }
-  .sol-card p {
-    color: var(--starlight);
-    font-size: 15px;
-    line-height: 1.6;
-  }
+  .shot p { font-size: 16px; line-height: 1.6; color: var(--starlight); }
 
   /* ========== PEOPLE ========== */
   /* Every person - team, advisory board, research group - gets the same box:
@@ -559,7 +586,7 @@
     .nav-links { display: none; }
     .menu-toggle { display: block; }
     .nav-cta { display: none; }
-    .solution-grid { grid-template-columns: 1fr; }
+    .compare, .shots { grid-template-columns: 1fr; }
     .people-grid, .people-grid.three, .people-grid.trio { grid-template-columns: repeat(2, 1fr); }
     section { padding: 72px 0; }
     section.page { padding-top: 124px; }

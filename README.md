@@ -25,7 +25,7 @@ js/site.js           Menu toggle, scroll reveal, mailto clipboard fallback
 img/brand/           Logo, favicon, OG card, star tile, mesh scenes
 img/people/          Team, advisory board and research group headshots
 img/partners/        Partner logos
-img/what/            The three card pictures on the What we do page
+img/what/            The pictures on the What we do page, taken from the deck
 tools/               render_scenes.py, which draws the mesh scenes
 CNAME                Custom domain for GitHub Pages
 .nojekyll            Serve files as-is, no Jekyll processing

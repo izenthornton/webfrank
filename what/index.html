@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/css/site.css?v=4" />
+<link rel="stylesheet" href="/css/site.css?v=5" />
 </head>
 <body>
 
@@ -68,23 +68,46 @@
       </p>
     </div>
 
-    <div class="solution-grid reveal">
-      <div class="sol-card">
-        <img class="shot" src="/img/what/field-rover.webp" width="1200" height="1009" alt="The FRANK test rover on loose sand." />
-        <h3>FRANK</h3>
-        <div class="expand">Flexible Recurrent Active-memory Neural Kernel</div>
-        <p>A learned policy of about 1M parameters. Perception, localisation, hazard detection and planning on a Raspberry Pi 5, on 58 mW.</p>
+    <div class="subsection reveal">
+      <h3 class="subsection-title">One operator, many rovers</h3>
+      <div class="compare">
+        <figure>
+          <figcaption class="tag">Today: one control room per rover</figcaption>
+          <div class="diagram">
+            <img src="/img/what/one-control-room-per-rover.webp" width="845" height="518" alt="A drive team on Earth exchanging commands and images with a single rover on the Moon." />
+            <span class="place" style="left:16%; top:40%">Earth</span>
+            <span style="right:54%; top:50%">commands</span>
+            <span style="left:57%; top:50%">images</span>
+            <span class="place end" style="right:4%; top:51%">Moon</span>
+          </div>
+        </figure>
+        <figure>
+          <figcaption class="tag red">With FRANK: one operator for the fleet</figcaption>
+          <div class="diagram">
+            <img src="/img/what/one-operator-for-the-fleet.webp" width="844" height="518" alt="One operator on Earth sending a single command to five rovers on the Moon, each driving its own route." />
+            <span class="place" style="left:16%; top:40%">Earth</span>
+            <span class="hl" style="left:48%; top:35%">one command</span>
+            <span class="place end" style="right:4%; top:51%">Moon</span>
+          </div>
+        </figure>
       </div>
-      <div class="sol-card">
-        <img class="shot" src="/img/what/demo-1-survey-track.webp" width="1200" height="805" alt="Aerial view of a survey field with the rover's survey track drawn in red." />
-        <h3>DEMO-1</h3>
-        <p>Twelve field runs in October 2026. 1,827 m autonomous, with two complete surveys without GPS, both at night.</p>
-      </div>
-      <div class="sol-card">
-        <img class="shot" src="/img/what/one-operator-for-the-fleet.webp" width="844" height="518" alt="One operator on Earth sending a single command to five rovers on the Moon." />
-        <h3>ONE OPERATOR</h3>
-        <p>One command per traverse. The rover does not need the link to drive, so one operator can hold a fleet.</p>
-      </div>
+    </div>
+
+    <div class="shots reveal">
+      <figure class="shot">
+        <img src="/img/what/field-rover.webp" width="1200" height="1009" alt="The FRANK test rover on loose sand." />
+        <figcaption>
+          <h3>FRANK</h3>
+          <p>A learned policy of about 1M parameters, running on a Raspberry Pi 5.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="/img/what/demo-1-survey-track.webp" width="1200" height="900" alt="Aerial view of a survey field with the rover's survey track drawn in red." />
+        <figcaption>
+          <h3>DEMO-1</h3>
+          <p>1,827 m driven autonomously in the field, with two complete surveys without GPS.</p>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
