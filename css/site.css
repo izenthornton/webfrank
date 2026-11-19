@@ -428,9 +428,10 @@
   .member-card.open .member-role { color: var(--muted); margin-bottom: 0; }
 
   /* ========== PARTNERS ========== */
+  /* Six partners, three across. */
   .partners-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
   }
   .partner-card {
