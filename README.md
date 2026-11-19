@@ -106,4 +106,4 @@ Then:    301 to concat("https://frank.space", http.request.uri.path)
 
 ## Contact
 
-hello@frankautonomous.com
+hello@frank.space
